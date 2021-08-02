@@ -7,10 +7,83 @@
     <groupId>com.epam.tc</groupId>
     <artifactId>dmitrii_smertin</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <testng.version>7.1.0</testng.version>
+        <hamcrest.version>2.2</hamcrest.version>
+        <assertj-core.version>3.4.1</assertj-core.version>
+        <bdir>C:\project\DmitriiSmertin</bdir>
+        <maven-surefire-plugin.defaultSuiteXmlFile>${project.build.testOutputDirectory}/testng/addAndSubtractSuite.xml
+        </maven-surefire-plugin.defaultSuiteXmlFile>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${maven-surefire-plugin.defaultSuiteXmlFile}</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>allTestProfile</id>
+            <properties>
+                <maven-surefire-plugin.defaultSuiteXmlFile>
+                    ${project.build.testOutputDirectory}/testng/allTestSuite.xml
+                </maven-surefire-plugin.defaultSuiteXmlFile>
+            </properties>
+        </profile>
+        <profile>
+            <id>multiplyAndDivideProfile</id>
+            <properties>
+                <maven-surefire-plugin.defaultSuiteXmlFile>
+                    ${project.build.testOutputDirectory}/testng/multiplyAndDivideSuite.xml
+                </maven-surefire-plugin.defaultSuiteXmlFile>
+            </properties>
+        </profile>
+        <profile>
+            <id>addAndSubtractProfile</id>
+        </profile>
+    </profiles>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>${hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>calculator-1.0</groupId>
+            <artifactId>calculator-1.0</artifactId>
+            <scope>system</scope>
+            <version>1.0</version>
+            <systemPath>${bdir}\src\main\resources\calculator-1.0.jar</systemPath>
+        </dependency>
+    </dependencies>
 </project>

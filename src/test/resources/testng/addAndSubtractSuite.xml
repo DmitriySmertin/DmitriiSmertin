@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="AddAndSubtractSuite">
+    <test name="AddAndSubtractTest">
+       <classes>
+           <class name="com.epam.tc.hw1.AddTest"/>
+           <class name="com.epam.tc.hw1.SubtractTest"/>
+       </classes>
+    </test>
+</suite>
