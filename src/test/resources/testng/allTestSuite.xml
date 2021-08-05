@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="AllTestSuite">
+    <test name="allTest">
+        <packages>
+            <package name="com.epam.tc.hw1"/>
+        </packages>
+    </test>
+</suite>
