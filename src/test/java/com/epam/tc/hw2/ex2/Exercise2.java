@@ -28,10 +28,10 @@ public class Exercise2 extends SetUpAndTearDown {
         driver.findElement(By.linkText("Different elements")).click();
         Assertions.assertThat(driver.getTitle()).isEqualTo("Different Elements");
         //6. Select checkboxes
-        driver.findElement(By.xpath("(//label[@class='label-checkbox']//input)[1]")).click();
-        driver.findElement(By.xpath("(//label[@class='label-checkbox']//input)[3]")).click();
+        driver.findElement(By.xpath("//label[text()[contains(.,'Water')]]/input")).click();
+        driver.findElement(By.xpath("//label[text()[contains(.,'Wind')]]/input")).click();
         //7. Select radio
-        driver.findElement(By.xpath("(//div[@class='checkbox-row']//input[@name='metal'])[4]")).click();
+        driver.findElement(By.xpath("//label[text()[contains(.,'Selen')]]/input")).click();
         //8. Select in dropdown
         driver.findElement(By.cssSelector("select.uui-form-element")).click();
         driver.findElement(By.xpath("//option[text()='Yellow']")).click();
