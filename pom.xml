@@ -61,6 +61,14 @@
                 </maven-surefire-plugin.defaultSuiteXmlFile>
             </properties>
         </profile>
+        <profile>
+            <id>seleniumHW3Profile</id>
+            <properties>
+                <maven-surefire-plugin.defaultSuiteXmlFile>
+                    ${project.build.testOutputDirectory}/testng/seleniumHW3.xml
+                </maven-surefire-plugin.defaultSuiteXmlFile>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
