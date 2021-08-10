@@ -16,6 +16,9 @@
         <assertj-core.version>3.4.1</assertj-core.version>
         <maven-surefire-plugin.defaultSuiteXmlFile>${project.build.testOutputDirectory}/testng/addAndSubtractSuite.xml
         </maven-surefire-plugin.defaultSuiteXmlFile>
+        <webdrivermanager.version>4.4.3</webdrivermanager.version>
+        <selenium-java.version>3.141.59</selenium-java.version>
+        <calculator-1.0.version>1.0</calculator-1.0.version>
     </properties>
 
     <build>
@@ -64,21 +67,18 @@
     </profiles>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest</artifactId>
             <version>${hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
@@ -89,20 +89,18 @@
             <groupId>calculator-1.0</groupId>
             <artifactId>calculator-1.0</artifactId>
             <scope>system</scope>
-            <version>1.0</version>
+            <version>${calculator-1.0.version}</version>
             <systemPath>${project.basedir}/src/main/resources/calculator-1.0.jar</systemPath>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>4.4.3</version>
+            <version>${webdrivermanager.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
+            <version>${selenium-java.version}</version>
         </dependency>
     </dependencies>
 </project>
