@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 public class Exercise2 extends SetUpAndTearDown {
+
     GeneralData data = new GeneralData();
 
     @Test
