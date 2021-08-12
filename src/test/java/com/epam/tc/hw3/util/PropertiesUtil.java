@@ -15,16 +15,14 @@ public class PropertiesUtil {
             fis = new FileInputStream("./src/test/resources/application.property");
             prop.load(fis);
             return prop.getProperty(key);
-        }
-        catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
                 fis.close();
-            }
-            catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
