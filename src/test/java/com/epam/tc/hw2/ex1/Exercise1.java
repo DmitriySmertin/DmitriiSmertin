@@ -16,46 +16,45 @@ import org.testng.annotations.Test;
 public class Exercise1 extends SetUpAndTearDown {
 
     //Data
-    GeneralData data = new GeneralData();
-    private final String homeNavItem = "HOME";
-    private final String contactNavItem = "CONTACT FORM";
-    private final String serviceNavItem = "SERVICE";
-    private final String metalsAndColorsNavItem = "METALS & COLORS";
-    private final List<String> expectedTextBenefitList = Arrays.asList(
+    private final String HOME_NAV_ITEM = "HOME";
+    private final String CONTACT_NAV_ITEM = "CONTACT FORM";
+    private final String SERVICE_NAV_ITEM = "SERVICE";
+    private final String METALS_AND_COLORS_NAV_ITEM = "METALS & COLORS";
+    private final List<String> TEXT_BENEFIT_LIST = Arrays.asList(
             "To include good practices and ideas from successful EPAM project",
             "To be flexible and customizable",
             "To be multiplatform",
             "Already have good base (about 20 internal and some external projects), wish to get more…");
-    private final List<String> expectedTextLeftMenuList = Arrays.asList(
+    private final List<String> TEXT_LEFT_MENU_LIST = Arrays.asList(
             "Home", "Contact form", "Service", "Metals & Colors", "Elements packs");
 
 
     @Test
     public void seleniumHw2Exercise1Test() {
         //1. Open test site by URL
-        driver.navigate().to(data.getIndexUrl());
+        driver.navigate().to(getIndexUrl());
         //2. Assert Browser title
-        Assertions.assertThat(driver.getTitle()).isEqualTo(data.getExpectedBrowserTitle());
+        Assertions.assertThat(driver.getTitle()).isEqualTo(getExpectedBrowserTitle());
         //3. Perform login
         driver.findElement(By.className("profile-photo")).click();
-        driver.findElement(By.id("name")).sendKeys(data.getUserName());
-        driver.findElement(By.id("password")).sendKeys(data.getUserPass());
+        driver.findElement(By.id("name")).sendKeys(getUserName());
+        driver.findElement(By.id("password")).sendKeys(getUserPass());
         driver.findElement(By.id("login-button")).click();
         //4. Assert Username is loggined
-        Assertions.assertThat(driver.findElement(By.id("user-name")).getText()).isEqualTo(data.getExpectedUserLogin());
+        Assertions.assertThat(driver.findElement(By.id("user-name")).getText()).isEqualTo(getExpectedUserLogin());
         Assertions.assertThat(driver.findElement(By.id("user-name")).isDisplayed());
         //5. Assert that there are 4 items on the header section are displayed and they have proper texts
         Assertions.assertThat(driver.findElement(By.linkText("Home")).getText().toUpperCase(Locale.ROOT))
-                .isEqualTo(homeNavItem);
+                .isEqualTo(HOME_NAV_ITEM);
         Assertions.assertThat(driver.findElement(By.linkText("Home")).isDisplayed());
         Assertions.assertThat(driver.findElement(By.linkText("Contact form")).getText().toUpperCase(Locale.ROOT))
-                .isEqualTo(contactNavItem);
+                .isEqualTo(CONTACT_NAV_ITEM);
         Assertions.assertThat(driver.findElement(By.linkText("Contact form")).isDisplayed());
         Assertions.assertThat(driver.findElement(By.linkText("Service")).getText().toUpperCase(Locale.ROOT))
-                .isEqualTo(serviceNavItem);
+                .isEqualTo(SERVICE_NAV_ITEM);
         Assertions.assertThat(driver.findElement(By.linkText("Service")).isDisplayed());
         Assertions.assertThat(driver.findElement(By.linkText("Metals & Colors")).getText().toUpperCase(Locale.ROOT))
-                .isEqualTo(metalsAndColorsNavItem);
+                .isEqualTo(METALS_AND_COLORS_NAV_ITEM);
         Assertions.assertThat(driver.findElement(By.linkText("Metals & Colors")).isDisplayed());
         //6. Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> imgIndexList = driver.findElements(By.xpath("//span[contains(@class,'icons-benefit')]"));
@@ -68,7 +67,7 @@ public class Exercise1 extends SetUpAndTearDown {
         Assertions.assertThat(textBenefitList.size()).isEqualTo(4);
         for (int i = 0; i < textBenefitList.size(); i++) {
             Assertions.assertThat(textBenefitList.get(i).getText().replace("\n", " "))
-                    .isEqualTo(expectedTextBenefitList.get(i));
+                    .isEqualTo(TEXT_BENEFIT_LIST.get(i));
         }
         //8. Assert that there is the iframe with “Frame Button” exist
         Assertions.assertThat(driver.findElement(By.id("frame")).isEnabled());
@@ -79,11 +78,11 @@ public class Exercise1 extends SetUpAndTearDown {
         //10. Switch to original window back
         driver.switchTo().window(windowHomePage);
         //11. Assert that there are 5 items in the Left Section are displayed and they have proper text
-        List<WebElement> leftMenuItemsList = driver.findElements(By.xpath("//ul[contains (@class, 'left')]/li/a"));
+        List<WebElement> leftMenuItemsList = driver.findElements(By.cssSelector("ul.sidebar-menu.left > li"));
         Assertions.assertThat(leftMenuItemsList.size()).isEqualTo(5);
         for (int i = 0; i < leftMenuItemsList.size(); i++) {
             Assertions.assertThat(leftMenuItemsList.get(i).isDisplayed());
-            Assertions.assertThat(leftMenuItemsList.get(i).getText()).isEqualTo(expectedTextLeftMenuList.get(i));
+            Assertions.assertThat(leftMenuItemsList.get(i).getText()).isEqualTo(TEXT_LEFT_MENU_LIST.get(i));
         }
         //12. Close Browser(configured in SetUpAndTearDown.class)
     }

@@ -12,7 +12,7 @@ import java.util.List;
 
 public class IndexPage extends BasePage {
     //DATA
-    private final List<String> expTextBenefitList = Arrays.asList(
+    private final List<String> TEXT_BENEFIT_LIST = Arrays.asList(
             "To include good practices and ideas from successful EPAM project",
             "To be flexible and customizable",
             "To be multiplatform",
@@ -84,7 +84,7 @@ public class IndexPage extends BasePage {
     public void checkBenefitTextDisplayed() {
         for (int i = 0; i < textBenefitList.size(); i++) {
             Assertions.assertThat(textBenefitList.get(i).getText().replace("\n", " "))
-                    .isEqualTo(expTextBenefitList.get(i));
+                    .isEqualTo(TEXT_BENEFIT_LIST.get(i));
         }
     }
 
