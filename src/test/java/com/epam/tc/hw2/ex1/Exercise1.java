@@ -77,7 +77,7 @@ public class Exercise1 extends SetUpAndTearDown {
         //10. Switch to original window back
         driver.switchTo().window(windowHomePage);
         //11. Assert that there are 5 items in the Left Section are displayed and they have proper text
-        List<WebElement> leftMenuItemsList = driver.findElements(By.xpath("//ul[@class = 'sidebar-menu left']/li/a"));
+        List<WebElement> leftMenuItemsList = driver.findElements(By.cssSelector("ul.sidebar-menu.left > li"));
         Assertions.assertThat(leftMenuItemsList.size()).isEqualTo(5);
         for (int i = 0; i < leftMenuItemsList.size(); i++) {
             Assertions.assertThat(leftMenuItemsList.get(i).isDisplayed());
