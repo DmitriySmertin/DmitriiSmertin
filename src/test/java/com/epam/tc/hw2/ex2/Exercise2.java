@@ -1,27 +1,31 @@
 package com.epam.tc.hw2.ex2;
 
+import com.epam.tc.hw2.GeneralData;
 import com.epam.tc.hw2.SetUpAndTearDown;
+
 import java.util.List;
+
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 public class Exercise2 extends SetUpAndTearDown {
+    GeneralData data = new GeneralData();
 
     @Test
     public void seleniumHw2Exercise2Test() {
         //1. Open test site by URL
-        driver.navigate().to(indexUrl);
+        driver.navigate().to(data.getIndexUrl());
         //2. Assert Browser title
-        Assertions.assertThat(driver.getTitle()).isEqualTo(expectedBrowserTitle);
+        Assertions.assertThat(driver.getTitle()).isEqualTo(data.getExpectedBrowserTitle());
         //3. Perform login
         driver.findElement(By.className("profile-photo")).click();
-        driver.findElement(By.id("name")).sendKeys(userName);
-        driver.findElement(By.id("password")).sendKeys(userPass);
+        driver.findElement(By.id("name")).sendKeys(data.getUserName());
+        driver.findElement(By.id("password")).sendKeys(data.getUserPass());
         driver.findElement(By.id("login-button")).click();
         //4. Assert Username is loggined
-        Assertions.assertThat(driver.findElement(By.id("user-name")).getText()).isEqualTo(expectedUserLogin);
+        Assertions.assertThat(driver.findElement(By.id("user-name")).getText()).isEqualTo(data.getExpectedUserLogin());
         Assertions.assertThat(driver.findElement(By.id("user-name")).isDisplayed());
         //5. Open through the header menu Service -> Different Elements Page
         driver.findElement(By.linkText("Service")).click();

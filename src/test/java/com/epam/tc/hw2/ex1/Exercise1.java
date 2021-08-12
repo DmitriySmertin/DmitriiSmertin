@@ -1,9 +1,12 @@
 package com.epam.tc.hw2.ex1;
 
+import com.epam.tc.hw2.GeneralData;
 import com.epam.tc.hw2.SetUpAndTearDown;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -13,32 +16,33 @@ import org.testng.annotations.Test;
 public class Exercise1 extends SetUpAndTearDown {
 
     //Data
-    private String homeNavItem = "HOME";
-    private String contactNavItem = "CONTACT FORM";
-    private String serviceNavItem = "SERVICE";
-    private String metalsAndColorsNavItem = "METALS & COLORS";
-    List<String> expectedTextBenefitList = Arrays.asList(
+    GeneralData data = new GeneralData();
+    private final String homeNavItem = "HOME";
+    private final String contactNavItem = "CONTACT FORM";
+    private final String serviceNavItem = "SERVICE";
+    private final String metalsAndColorsNavItem = "METALS & COLORS";
+    private final List<String> expectedTextBenefitList = Arrays.asList(
             "To include good practices and ideas from successful EPAM project",
             "To be flexible and customizable",
             "To be multiplatform",
             "Already have good base (about 20 internal and some external projects), wish to get more…");
-    List<String> expectedTextLeftMenuList = Arrays.asList(
+    private final List<String> expectedTextLeftMenuList = Arrays.asList(
             "Home", "Contact form", "Service", "Metals & Colors", "Elements packs");
 
 
     @Test
     public void seleniumHw2Exercise1Test() {
         //1. Open test site by URL
-        driver.navigate().to(indexUrl);
+        driver.navigate().to(data.getIndexUrl());
         //2. Assert Browser title
-        Assertions.assertThat(driver.getTitle()).isEqualTo(expectedBrowserTitle);
+        Assertions.assertThat(driver.getTitle()).isEqualTo(data.getExpectedBrowserTitle());
         //3. Perform login
         driver.findElement(By.className("profile-photo")).click();
-        driver.findElement(By.id("name")).sendKeys(userName);
-        driver.findElement(By.id("password")).sendKeys(userPass);
+        driver.findElement(By.id("name")).sendKeys(data.getUserName());
+        driver.findElement(By.id("password")).sendKeys(data.getUserPass());
         driver.findElement(By.id("login-button")).click();
         //4. Assert Username is loggined
-        Assertions.assertThat(driver.findElement(By.id("user-name")).getText()).isEqualTo(expectedUserLogin);
+        Assertions.assertThat(driver.findElement(By.id("user-name")).getText()).isEqualTo(data.getExpectedUserLogin());
         Assertions.assertThat(driver.findElement(By.id("user-name")).isDisplayed());
         //5. Assert that there are 4 items on the header section are displayed and they have proper texts
         Assertions.assertThat(driver.findElement(By.linkText("Home")).getText().toUpperCase(Locale.ROOT))

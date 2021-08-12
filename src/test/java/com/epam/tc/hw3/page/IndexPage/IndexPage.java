@@ -2,19 +2,17 @@ package com.epam.tc.hw3.page.IndexPage;
 
 import com.epam.tc.hw3.page.BasePage;
 import org.assertj.core.api.Assertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import java.util.Arrays;
 import java.util.List;
 
 
 public class IndexPage extends BasePage {
     //DATA
-    List<String> expTextBenefitList = Arrays.asList(
+    private final List<String> expTextBenefitList = Arrays.asList(
             "To include good practices and ideas from successful EPAM project",
             "To be flexible and customizable",
             "To be multiplatform",
@@ -42,7 +40,7 @@ public class IndexPage extends BasePage {
     @FindBy(className = "benefit-txt")
     private List<WebElement> textBenefitList;
 
-    @FindBy(id="frame")
+    @FindBy(id = "frame")
     private WebElement frameWthButton;
 
     @FindBy(id = "frame-button")
@@ -90,23 +88,23 @@ public class IndexPage extends BasePage {
         }
     }
 
-    public void checkFrameWthButtonEnabled(){
+    public void checkFrameWthButtonEnabled() {
         Assertions.assertThat(frameWthButton.isEnabled());
     }
 
-    String windowHomePage = "";
-    public String switchToIframe(){
+    private String windowHomePage = "";
+
+    public String switchToIframe() {
         windowHomePage = driver.getWindowHandle();
         driver.switchTo().frame("frame");
         return windowHomePage;
     }
 
-    public void switchToWindowHome()
-    {
+    public void switchToWindowHome() {
         driver.switchTo().window(windowHomePage);
     }
 
-    public void checkFrameButtonEnabled(){
+    public void checkFrameButtonEnabled() {
         Assertions.assertThat(frameButton.isEnabled());
     }
 }
