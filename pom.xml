@@ -60,7 +60,7 @@
             <id>seleniumHW2Profile</id>
             <properties>
                 <maven-surefire-plugin.defaultSuiteXmlFile>
-                    ${project.build.testOutputDirectory}/testng/seleniumHW2.xml
+                    ${project.build.testOutputDirectory}/testng/seleniumHW2Suite.xml
                 </maven-surefire-plugin.defaultSuiteXmlFile>
             </properties>
         </profile>
