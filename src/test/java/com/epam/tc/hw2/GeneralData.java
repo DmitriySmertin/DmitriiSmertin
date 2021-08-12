@@ -2,30 +2,30 @@ package com.epam.tc.hw2;
 
 public class GeneralData {
 
-    private final String indexUrl = "https://jdi-testing.github.io/jdi-light/index.html";
-    private final String expectedBrowserTitle = "Home Page";
-    private final String userName = "Roman";
-    private final String userPass = "Jdi1234";
-    private final String expectedUserLogin = "ROMAN IOVLEV";
+    private final static String INDEX_URL = "https://jdi-testing.github.io/jdi-light/index.html";
+    private final static String EXPECTED_BROWSER_TITLE = "Home Page";
+    private final static String USER_NAME = "Roman";
+    private final static String USER_PASS = "Jdi1234";
+    private final static String EXPECTED_USER_LOGIN = "ROMAN IOVLEV";
 
     public String getIndexUrl() {
-        return indexUrl;
+        return INDEX_URL;
     }
 
     public String getExpectedBrowserTitle() {
-        return expectedBrowserTitle;
+        return EXPECTED_BROWSER_TITLE;
     }
 
     public String getUserName() {
-        return userName;
+        return USER_NAME;
     }
 
     public String getUserPass() {
-        return userPass;
+        return USER_PASS;
     }
 
     public String getExpectedUserLogin() {
-        return expectedUserLogin;
+        return EXPECTED_USER_LOGIN;
     }
 
 
