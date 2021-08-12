@@ -16,6 +16,9 @@
         <assertj-core.version>3.4.1</assertj-core.version>
         <maven-surefire-plugin.defaultSuiteXmlFile>${project.build.testOutputDirectory}/testng/addAndSubtractSuite.xml
         </maven-surefire-plugin.defaultSuiteXmlFile>
+        <webdrivermanager.version>4.4.3</webdrivermanager.version>
+        <selenium-java.version>3.141.59</selenium-java.version>
+        <calculator-1.0.version>1.0</calculator-1.0.version>
     </properties>
 
     <build>
@@ -53,24 +56,29 @@
         <profile>
             <id>addAndSubtractProfile</id>
         </profile>
+        <profile>
+            <id>seleniumHW2Profile</id>
+            <properties>
+                <maven-surefire-plugin.defaultSuiteXmlFile>
+                    ${project.build.testOutputDirectory}/testng/seleniumHW2Suite.xml
+                </maven-surefire-plugin.defaultSuiteXmlFile>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest</artifactId>
             <version>${hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
@@ -81,8 +89,18 @@
             <groupId>calculator-1.0</groupId>
             <artifactId>calculator-1.0</artifactId>
             <scope>system</scope>
-            <version>1.0</version>
+            <version>${calculator-1.0.version}</version>
             <systemPath>${project.basedir}/src/main/resources/calculator-1.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium-java.version}</version>
         </dependency>
     </dependencies>
 </project>
