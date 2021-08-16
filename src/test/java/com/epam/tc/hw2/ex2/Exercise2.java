@@ -1,5 +1,6 @@
 package com.epam.tc.hw2.ex2;
 
+import com.epam.tc.hw2.BaseExerciseClass;
 import com.epam.tc.hw2.SetUpAndTearDown;
 import java.util.List;
 import org.assertj.core.api.Assertions;
@@ -7,7 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-public class Exercise2 extends SetUpAndTearDown {
+public class Exercise2 extends BaseExerciseClass {
 
     @Test
     public void seleniumHw2Exercise2Test() {

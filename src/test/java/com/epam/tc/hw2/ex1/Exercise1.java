@@ -1,5 +1,6 @@
 package com.epam.tc.hw2.ex1;
 
+import com.epam.tc.hw2.BaseExerciseClass;
 import com.epam.tc.hw2.SetUpAndTearDown;
 
 import java.util.Arrays;
@@ -12,7 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 
-public class Exercise1 extends SetUpAndTearDown {
+public class Exercise1 extends BaseExerciseClass {
 
     //Data
     private final String HOME_NAV_ITEM = "HOME";

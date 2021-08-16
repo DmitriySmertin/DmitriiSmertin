@@ -1,6 +1,9 @@
 package com.epam.tc.hw2;
 
-public class GeneralData {
+import com.epam.tc.hw2.SetUpAndTearDown;
+
+public abstract class BaseExerciseClass extends SetUpAndTearDown {
+
 
     private final static String INDEX_URL = "https://jdi-testing.github.io/jdi-light/index.html";
     private final static String EXPECTED_BROWSER_TITLE = "Home Page";
