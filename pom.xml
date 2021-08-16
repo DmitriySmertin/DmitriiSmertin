@@ -19,6 +19,9 @@
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
         <selenium-java.version>3.141.59</selenium-java.version>
         <calculator-1.0.version>1.0</calculator-1.0.version>
+        <allure.version>2.13.2</allure.version>
+        <aspectj.version>1.9.5</aspectj.version>
+        <lombok.version>1.18.20</lombok.version>
     </properties>
 
     <build>
@@ -32,6 +35,13 @@
                         <suiteXmlFile>${maven-surefire-plugin.defaultSuiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
@@ -72,8 +82,15 @@
                 </maven-surefire-plugin.defaultSuiteXmlFile>
             </properties>
         </profile>
+        <profile>
+            <id>seleniumHW4Profile</id>
+            <properties>
+                <maven-surefire-plugin.defaultSuiteXmlFile>
+                    ${project.build.testOutputDirectory}/testng/seleniumHW4Suite.xml
+                </maven-surefire-plugin.defaultSuiteXmlFile>
+            </properties>
+        </profile>
     </profiles>
-
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
@@ -101,9 +118,20 @@
             <systemPath>${project.basedir}/src/main/resources/calculator-1.0.jar</systemPath>
         </dependency>
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -111,4 +139,17 @@
             <version>${selenium-java.version}</version>
         </dependency>
     </dependencies>
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
+                <configuration>
+                    <reportVersion>${allure.version}</reportVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
