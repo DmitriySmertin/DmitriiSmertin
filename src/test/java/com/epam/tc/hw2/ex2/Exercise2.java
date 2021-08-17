@@ -52,3 +52,4 @@ public class Exercise2 extends BaseExerciseClass {
     }
 
 }
+

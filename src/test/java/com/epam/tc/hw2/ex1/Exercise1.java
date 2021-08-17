@@ -86,3 +86,4 @@ public class Exercise1 extends BaseExerciseClass {
         //12. Close Browser(configured in SetUpAndTearDown.class)
     }
 }
+
