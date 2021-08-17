@@ -1,7 +1,6 @@
 package com.epam.tc.hw2.ex1;
 
 import com.epam.tc.hw2.BaseExerciseClass;
-import com.epam.tc.hw2.SetUpAndTearDown;
 
 import java.util.Arrays;
 import java.util.List;
@@ -87,3 +86,4 @@ public class Exercise1 extends BaseExerciseClass {
         //12. Close Browser(configured in SetUpAndTearDown.class)
     }
 }
+

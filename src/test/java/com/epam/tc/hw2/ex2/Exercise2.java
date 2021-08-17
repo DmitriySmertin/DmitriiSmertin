@@ -1,8 +1,10 @@
 package com.epam.tc.hw2.ex2;
 
+
 import com.epam.tc.hw2.BaseExerciseClass;
-import com.epam.tc.hw2.SetUpAndTearDown;
+
 import java.util.List;
+
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -39,6 +41,7 @@ public class Exercise2 extends BaseExerciseClass {
         //* 9. Assert that
         //• for each checkbox there is an individual log row and value is corresponded to the status of checkbox;
         List<WebElement> logList = driver.findElements(By.xpath("//ul[contains(@class,'logs')]//li"));
+
         Assertions.assertThat(logList.get(2).getText().contains("Wind: condition changed to true")).isTrue();
         Assertions.assertThat(logList.get(3).getText().contains("Water: condition changed to true")).isTrue();
         //•	for radio button there is a log row and value is corresponded to the status of radio button;
@@ -49,3 +52,4 @@ public class Exercise2 extends BaseExerciseClass {
     }
 
 }
+
