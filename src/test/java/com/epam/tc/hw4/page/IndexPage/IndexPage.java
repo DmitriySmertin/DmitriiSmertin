@@ -73,8 +73,8 @@ public class IndexPage extends BasePage {
     }
 
     @Step
-    public void checkImgCount() {
-        Assertions.assertThat(imgIndexList.size()).isEqualTo(4);
+    public void checkImgCount(int count) {
+        Assertions.assertThat(imgIndexList.size()).isEqualTo(count);
     }
 
     @Step
@@ -85,8 +85,8 @@ public class IndexPage extends BasePage {
     }
 
     @Step
-    public void checkBenefitTextCount() {
-        Assertions.assertThat(textBenefitList.size()).isEqualTo(4);
+    public void checkBenefitTextCount(int count) {
+        Assertions.assertThat(textBenefitList.size()).isEqualTo(count);
     }
 
     @Step

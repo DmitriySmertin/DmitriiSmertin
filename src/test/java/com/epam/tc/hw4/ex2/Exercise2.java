@@ -25,7 +25,7 @@ public class Exercise2 extends BasePage {
         //1. Open test site by URL
         indexPage.openPage(propUtil.getValue("url.index"));
         step("2. Assert Browser title");
-        indexPage.checkTitle();
+        indexPage.checkTitle("Home Page");
         step("3. Perform login");
         indexPage.login();
         step("4. Assert Username is loggined");
@@ -34,7 +34,7 @@ public class Exercise2 extends BasePage {
         IndexPageHeader header = new IndexPageHeader(driver);
         header.openDiffElementPage();
         DiffElementsPage diffElementsPage = new DiffElementsPage(driver);
-        diffElementsPage.checkTitle();
+        diffElementsPage.checkTitle("Different Elements");
         step("6. Select checkboxes Water and Wind");
         diffElementsPage.selectWater();
         diffElementsPage.selectWind();
@@ -44,12 +44,12 @@ public class Exercise2 extends BasePage {
         diffElementsPage.selectYellow();
         step("9a. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox");
         DiffElementsLogWindow logWindow = new DiffElementsLogWindow(driver);
-        logWindow.checkWaterCheckBox();
-        logWindow.checkWindCheckBox();
+        logWindow.checkWebElementInLogWindow(4, "Wind: condition changed to true");
+        logWindow.checkWebElementInLogWindow(3, "Water: condition changed to true");
         step("9b. Assert that for radio button there is a log row and value is corresponded to the status of radio button");
-        logWindow.checkSelenRadioBtn();
+        logWindow.checkWebElementInLogWindow(2, "metal: value changed to Selen");
         step("9c. Assert that for dropdown there is a log row and value is corresponded to the selected value");
-        logWindow.checkYellowColorDropbox();
+        logWindow.checkWebElementInLogWindow(1, "value changed to Yellow");
         step("10. Close Browser(configured in BasePage.class)");
     }
 

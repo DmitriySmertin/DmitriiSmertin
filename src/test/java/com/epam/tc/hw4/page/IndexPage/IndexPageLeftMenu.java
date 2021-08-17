@@ -21,8 +21,8 @@ public class IndexPageLeftMenu extends IndexPage {
     List<WebElement> leftMenuItemsList;
 
     @Step
-    public void checkCountLeftMenuItems() {
-        Assertions.assertThat(leftMenuItemsList.size()).isEqualTo(5);
+    public void checkCountLeftMenuItems(int count) {
+        Assertions.assertThat(leftMenuItemsList.size()).isEqualTo(count);
     }
 
     @Step

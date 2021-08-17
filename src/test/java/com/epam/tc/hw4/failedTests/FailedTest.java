@@ -1,21 +1,21 @@
 package com.epam.tc.hw4.failedTests;
 
+import com.epam.tc.hw3.page.BasePage;
 import com.epam.tc.hw3.page.IndexPage.IndexPage;
 import com.epam.tc.hw3.page.IndexPage.IndexPageHeader;
 import com.epam.tc.hw3.page.IndexPage.IndexPageLeftMenu;
-import com.epam.tc.hw4.page.BasePage;
 import org.testng.annotations.Test;
 
-public class failedTest extends BasePage {
+public class FailedTest extends BasePage {
 
     @Test
-    public void indexPageLoginAndFillingPageContentFailTest() {
+    public void indexPageLoginAndFillingPageContentTest() {
 
         IndexPage indexPage = new IndexPage(driver);
         //1. Open test site by URL
         indexPage.openPage(propUtil.getValue("url.index"));
         //2. Assert Browser title
-        indexPage.checkTitle();
+        indexPage.checkTitle("Home Pag");
         //3. Perform login
         indexPage.login();
         //4. Assert Username is loggined
@@ -24,10 +24,10 @@ public class failedTest extends BasePage {
         IndexPageHeader header = new IndexPageHeader(driver);
         header.checkItemsHeaderMenu();
         //6. Assert that there are 4 images on the Index Page, and they are displayed
-        indexPage.checkImgCount();
+        indexPage.checkImgCount(4);
         indexPage.checkImgDisplayed();
         //7. Assert that there are 4 texts on the Index Page under icons, and they have proper text
-        indexPage.checkBenefitTextCount();
+        indexPage.checkBenefitTextCount(4);
         indexPage.checkBenefitTextDisplayed();
         //8. Assert that there is the iframe with “Frame Button” exist
         indexPage.checkFrameWthButtonEnabled();
@@ -38,7 +38,7 @@ public class failedTest extends BasePage {
         indexPage.switchToWindowHome();
         //11. Assert that there are 5 items in the Left Section are displayed, and they have proper text
         IndexPageLeftMenu leftMenu = new IndexPageLeftMenu(driver);
-        leftMenu.checkCountLeftMenuItems();
+        leftMenu.checkCountLeftMenuItems(5);
         leftMenu.checkTextAndDisplayedItems();
         //12. Close Browser(configured in BasePage.class)
     }
