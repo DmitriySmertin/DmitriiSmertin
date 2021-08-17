@@ -1,18 +1,11 @@
 package com.epam.tc.hw3.ex2;
 
-import com.epam.tc.hw2.SetUpAndTearDown;
 import com.epam.tc.hw3.page.BasePage;
 import com.epam.tc.hw3.page.DiffElementsPage.DiffElementsLogWindow;
 import com.epam.tc.hw3.page.DiffElementsPage.DiffElementsPage;
 import com.epam.tc.hw3.page.IndexPage.IndexPage;
 import com.epam.tc.hw3.page.IndexPage.IndexPageHeader;
-import com.epam.tc.hw3.page.IndexPage.IndexPageLeftMenu;
-import org.assertj.core.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 public class Exercise2 extends BasePage {
 
@@ -42,12 +35,12 @@ public class Exercise2 extends BasePage {
         //* 9. Assert that
         //• for each checkbox there is an individual log row and value is corresponded to the status of checkbox;
         DiffElementsLogWindow logWindow = new DiffElementsLogWindow(driver);
-        logWindow.checkWindCheckBox(3,"Wind: condition changed to true");
-        logWindow.checkWaterCheckBox(2,"Water: condition changed to true");
+        logWindow.checkWebElementInLogWindow(4, "Wind: condition changed to true");
+        logWindow.checkWebElementInLogWindow(3, "Water: condition changed to true");
         //•	for radio button there is a log row and value is corresponded to the status of radio button;
-        logWindow.checkSelenRadioBtn(1,"metal: value changed to Selen");
+        logWindow.checkWebElementInLogWindow(2, "metal: value changed to Selen");
         //• for dropdown there is a log row and value is corresponded to the selected value;
-        logWindow.checkYellowColorDropbox(0,"value changed to Yellow");
+        logWindow.checkWebElementInLogWindow(1, "value changed to Yellow");
         // 10. Close Browser(configured in BasePage.class)
     }
 
