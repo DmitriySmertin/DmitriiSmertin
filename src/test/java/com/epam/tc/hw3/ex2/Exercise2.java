@@ -42,12 +42,12 @@ public class Exercise2 extends BasePage {
         //* 9. Assert that
         //• for each checkbox there is an individual log row and value is corresponded to the status of checkbox;
         DiffElementsLogWindow logWindow = new DiffElementsLogWindow(driver);
-        logWindow.checkWaterCheckBox();
-        logWindow.checkWindCheckBox();
+        logWindow.checkWindCheckBox(3,"Wind: condition changed to true");
+        logWindow.checkWaterCheckBox(2,"Water: condition changed to true");
         //•	for radio button there is a log row and value is corresponded to the status of radio button;
-        logWindow.checkSelenRadioBtn();
+        logWindow.checkSelenRadioBtn(1,"metal: value changed to Selen");
         //• for dropdown there is a log row and value is corresponded to the selected value;
-        logWindow.checkYellowColorDropbox();
+        logWindow.checkYellowColorDropbox(0,"value changed to Yellow");
         // 10. Close Browser(configured in BasePage.class)
     }
 

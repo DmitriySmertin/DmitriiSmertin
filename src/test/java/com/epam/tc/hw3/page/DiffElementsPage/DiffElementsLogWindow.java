@@ -18,21 +18,21 @@ public class DiffElementsLogWindow extends DiffElementsPage {
     List<WebElement> logList;
 
 
-    public void checkWindCheckBox() {
-        Assertions.assertThat(logList.get(2).getText().contains("Wind: condition changed to true")).isTrue();
+    public void checkWindCheckBox(int positionInLogWindow, String text) {
+        Assertions.assertThat(logList.get(positionInLogWindow).getText().contains(text)).isTrue();
 
     }
 
-    public void checkWaterCheckBox() {
-        Assertions.assertThat(logList.get(3).getText().contains("Water: condition changed to true")).isTrue();
+    public void checkWaterCheckBox(int positionInLogWindow, String text) {
+        Assertions.assertThat(logList.get(positionInLogWindow).getText().contains(text)).isTrue();
     }
 
-    public void checkSelenRadioBtn() {
-        Assertions.assertThat(logList.get(1).getText().contains("metal: value changed to Selen")).isTrue();
+    public void checkSelenRadioBtn(int positionInLogWindow, String text) {
+        Assertions.assertThat(logList.get(positionInLogWindow).getText().contains(text)).isTrue();
     }
 
-    public void checkYellowColorDropbox() {
-        Assertions.assertThat(logList.get(0).getText().contains("value changed to Yellow")).isTrue();
+    public void checkYellowColorDropbox(int positionInLogWindow, String text) {
+        Assertions.assertThat(logList.get(positionInLogWindow).getText().contains(text)).isTrue();
     }
 
 }

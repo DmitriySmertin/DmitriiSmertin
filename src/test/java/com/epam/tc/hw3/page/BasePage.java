@@ -22,7 +22,6 @@ public abstract class BasePage {
         Assertions.assertThat(driver.getTitle()).isEqualTo(title);
     }
 
-
     @BeforeClass()
     public void setUp() {
         WebDriverManager.chromedriver().setup();
