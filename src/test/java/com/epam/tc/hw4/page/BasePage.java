@@ -29,11 +29,12 @@ public abstract class BasePage {
     }
 
     @BeforeClass()
-    public void setUp() {
+    public void setUp(ITestContext context) {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        context.setAttribute("driver", driver);
     }
 
     @AfterClass()
