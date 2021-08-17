@@ -90,6 +90,14 @@
                 </maven-surefire-plugin.defaultSuiteXmlFile>
             </properties>
         </profile>
+        <profile>
+            <id>seleniumHW4AndFailedProfile</id>
+            <properties>
+                <maven-surefire-plugin.defaultSuiteXmlFile>
+                    ${project.build.testOutputDirectory}/testng/seleniumHW4AndFailedTestSuite.xml
+                </maven-surefire-plugin.defaultSuiteXmlFile>
+            </properties>
+        </profile>
     </profiles>
     <dependencies>
         <dependency>

@@ -42,8 +42,8 @@ public class Exercise2 extends BasePage {
         //* 9. Assert that
         //• for each checkbox there is an individual log row and value is corresponded to the status of checkbox;
         DiffElementsLogWindow logWindow = new DiffElementsLogWindow(driver);
-        logWindow.checkWebElementInLogWindow(4, "Wind: condition changed to true");
-        logWindow.checkWebElementInLogWindow(3, "Water: condition changed to true");
+        logWindow.checkWebElementInLogWindow(4, "Water: condition changed to true");
+        logWindow.checkWebElementInLogWindow(3, "Wind: condition changed to true");
         //•	for radio button there is a log row and value is corresponded to the status of radio button;
         logWindow.checkWebElementInLogWindow(2, "metal: value changed to Selen");
         //• for dropdown there is a log row and value is corresponded to the selected value;

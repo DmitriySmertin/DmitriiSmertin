@@ -1,9 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="SeleniumHW4Suite">
+<suite name="seleniumHW4AndFailedTestSuite">
     <listeners>
         <listener class-name="com.epam.tc.hw4.listeners.ScreenshotListener"/>
     </listeners>
-    <test name="SeleniumHW4Test">
+    <test name="SeleniumHW4AndFailedTest">
         <classes>
             <class name="com.epam.tc.hw4.ex1.Exercise1"></class>
             <class name="com.epam.tc.hw4.ex2.Exercise2"></class>
