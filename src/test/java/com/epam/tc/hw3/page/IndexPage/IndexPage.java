@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -51,10 +52,6 @@ public class IndexPage extends BasePage {
         this.driver = driver;
     }
 
-    public void checkTitle() {
-        Assertions.assertThat(driver.getTitle()).isEqualTo("Home Page");
-    }
-
     public void checkLogin() {
         Assertions.assertThat(userName.getText()).isEqualTo(propUtil.getValue("user.login"));
         Assertions.assertThat(userName.isDisplayed());
@@ -67,8 +64,8 @@ public class IndexPage extends BasePage {
         loginButton.click();
     }
 
-    public void checkImgCount() {
-        Assertions.assertThat(imgIndexList.size()).isEqualTo(4);
+    public void checkImgCount(int count) {
+        Assertions.assertThat(imgIndexList.size()).isEqualTo(count);
     }
 
     public void checkImgDisplayed() {
@@ -77,8 +74,8 @@ public class IndexPage extends BasePage {
         }
     }
 
-    public void checkBenefitTextCount() {
-        Assertions.assertThat(textBenefitList.size()).isEqualTo(4);
+    public void checkBenefitTextCount(int count) {
+        Assertions.assertThat(textBenefitList.size()).isEqualTo(count);
     }
 
     public void checkBenefitTextDisplayed() {

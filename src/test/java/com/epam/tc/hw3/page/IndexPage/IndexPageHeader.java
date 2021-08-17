@@ -29,7 +29,7 @@ public class IndexPageHeader extends IndexPage {
     private WebElement servDiffElements;
 
 
-    public void checkItemsHeaderMenu(){
+    public void checkItemsHeaderMenu() {
         Assertions.assertThat(menuHome.getText().toUpperCase(Locale.ROOT)).isEqualTo("HOME");
         Assertions.assertThat(menuHome.isDisplayed());
         Assertions.assertThat(menuCont.getText().toUpperCase(Locale.ROOT)).isEqualTo("CONTACT FORM");
@@ -40,13 +40,10 @@ public class IndexPageHeader extends IndexPage {
         Assertions.assertThat(menuMetCol.isDisplayed());
     }
 
-    public void openDiffElementPage()
-    {
+    public void openDiffElementPage() {
         menuServ.click();
         servDiffElements.click();
     }
-
-
 
 
 }

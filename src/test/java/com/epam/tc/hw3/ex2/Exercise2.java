@@ -22,7 +22,7 @@ public class Exercise2 extends BasePage {
         //1. Open test site by URL
         indexPage.openPage(propUtil.getValue("url.index"));
         //2. Assert Browser title
-        indexPage.checkTitle();
+        indexPage.checkTitle("Home Page");
         //3. Perform login
         indexPage.login();
         //4. Assert Username is loggined
@@ -31,7 +31,7 @@ public class Exercise2 extends BasePage {
         IndexPageHeader header = new IndexPageHeader(driver);
         header.openDiffElementPage();
         DiffElementsPage diffElementsPage = new DiffElementsPage(driver);
-        diffElementsPage.checkTitle();
+        diffElementsPage.checkTitle("Different Elements");
         //6. Select checkboxes
         diffElementsPage.selectWater();
         diffElementsPage.selectWind();

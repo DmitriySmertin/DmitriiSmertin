@@ -29,29 +29,22 @@ public class DiffElementsPage extends BasePage {
     @FindBy(xpath = "//option[text()='Yellow']")
     private WebElement yellowColor;
 
-    public void checkTitle() {
-        Assertions.assertThat(driver.getTitle()).isEqualTo("Different Elements");
-    }
-
-    public void selectWater(){
+    public void selectWater() {
         checkBoxWater.click();
     }
 
-    public void selectWind(){
+    public void selectWind() {
         checkBoxWind.click();
     }
 
-    public void selectSelen(){
+    public void selectSelen() {
         radioButtSelen.click();
     }
 
-    public void selectYellow(){
+    public void selectYellow() {
         dropdownColors.click();
         yellowColor.click();
     }
-
-
-
 
 
 }

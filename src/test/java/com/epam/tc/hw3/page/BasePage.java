@@ -2,6 +2,7 @@ package com.epam.tc.hw3.page;
 
 import com.epam.tc.hw3.util.PropertiesUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
@@ -16,6 +17,11 @@ public abstract class BasePage {
     public void openPage(String url) {
         driver.navigate().to(url);
     }
+
+    public void checkTitle(String title) {
+        Assertions.assertThat(driver.getTitle()).isEqualTo(title);
+    }
+
 
     @BeforeClass()
     public void setUp() {
