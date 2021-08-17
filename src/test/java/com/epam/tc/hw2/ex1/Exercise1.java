@@ -1,9 +1,11 @@
 package com.epam.tc.hw2.ex1;
 
 import com.epam.tc.hw2.BaseExerciseClass;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
