@@ -1,7 +1,6 @@
 package com.epam.tc.hw3.page.DiffElementsPage;
 
 import com.epam.tc.hw3.page.BasePage;
-import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

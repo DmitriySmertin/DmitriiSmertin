@@ -19,7 +19,7 @@ public class DiffElementsLogWindow extends DiffElementsPage {
 
 
     public void checkWebElementInLogWindow(int positionElementInLogWindow, String textElementInLogWindow) {
-        Assertions.assertThat(logList.get(positionElementInLogWindow-1).getText().contains(textElementInLogWindow)).isTrue();
+        Assertions.assertThat(logList.get(positionElementInLogWindow - 1).getText().contains(textElementInLogWindow)).isTrue();
     }
 
 
