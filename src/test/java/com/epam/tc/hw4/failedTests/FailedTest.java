@@ -1,15 +1,15 @@
 package com.epam.tc.hw4.failedTests;
 
-import com.epam.tc.hw3.page.BasePage;
-import com.epam.tc.hw3.page.IndexPage.IndexPage;
-import com.epam.tc.hw3.page.IndexPage.IndexPageHeader;
-import com.epam.tc.hw3.page.IndexPage.IndexPageLeftMenu;
+import com.epam.tc.hw4.page.BasePage;
+import com.epam.tc.hw4.page.IndexPage.IndexPage;
+import com.epam.tc.hw4.page.IndexPage.IndexPageHeader;
+import com.epam.tc.hw4.page.IndexPage.IndexPageLeftMenu;
 import org.testng.annotations.Test;
 
 public class FailedTest extends BasePage {
 
     @Test
-    public void indexPageLoginAndFillingPageContentTest() {
+    public void indexPageLoginAndFillingPageContentFailedTest() {
 
         IndexPage indexPage = new IndexPage(driver);
         //1. Open test site by URL

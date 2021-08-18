@@ -1,19 +1,22 @@
 package com.epam.tc.hw4.listeners;
 
-import com.epam.tc.hw4.util.AttachmentUtil;
+import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 public class ScreenshotListener implements ITestListener {
+
     @Override
     public void onTestFailure(ITestResult result) {
-        Object driver = result.getTestContext().getAttribute("driver");
+        WebDriver driver = (WebDriver) result.getTestContext().getAttribute("driver");
+        attachScreenShot(driver);
+    }
 
-        if (driver != null) {
-            byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-            AttachmentUtil.makeScreenshotAttachment("Screenshot on failure", screenshot);
-        }
+    @Attachment(type = "image/png", fileExtension = ".png")
+    private byte[] attachScreenShot(WebDriver driver) {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }

@@ -5,7 +5,6 @@ import com.epam.tc.hw4.page.IndexPage.IndexPage;
 import com.epam.tc.hw4.page.IndexPage.IndexPageHeader;
 import com.epam.tc.hw4.page.IndexPage.IndexPageLeftMenu;
 import io.qameta.allure.Feature;
-import io.qameta.allure.Step;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 

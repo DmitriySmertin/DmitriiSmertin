@@ -110,6 +110,7 @@ public class IndexPage extends BasePage {
         driver.switchTo().frame("frame");
         return windowHomePage;
     }
+
     @Step
     public void switchToWindowHome() {
         driver.switchTo().window(windowHomePage);

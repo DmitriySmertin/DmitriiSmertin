@@ -6,7 +6,6 @@ import com.epam.tc.hw4.page.DiffElementsPage.DiffElementsPage;
 import com.epam.tc.hw4.page.IndexPage.IndexPage;
 import com.epam.tc.hw4.page.IndexPage.IndexPageHeader;
 import io.qameta.allure.Feature;
-import io.qameta.allure.Features;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
@@ -17,6 +16,7 @@ public class Exercise2 extends BasePage {
     @Test()
     @Feature("Login IndexPage")
     @Feature("WebElements on Different Elements Page")
+    @Feature("LogWindow on Different Element Page")
     @Story("Testing the login Index Page and the functioning of web elements on the Different Elements Page")
     public void indexPageLoginAndDifferentElementsPageTest() {
         attachProperty();

@@ -3,7 +3,6 @@ package com.epam.tc.hw4.page;
 import com.epam.tc.hw3.util.PropertiesUtil;
 import com.epam.tc.hw4.util.AttachmentUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Step;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -29,12 +28,12 @@ public abstract class BasePage {
     }
 
     @BeforeClass()
-    public void setUp(ITestContext context) {
+    public void setUp(ITestContext testContext) {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        context.setAttribute("driver", driver);
+        testContext.setAttribute("driver", driver);
     }
 
     @AfterClass()
