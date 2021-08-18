@@ -19,7 +19,7 @@ public class DiffElementsLogWindow extends DiffElementsPage {
     @FindBy(xpath = "//ul[contains(@class,'logs')]//li")
     List<WebElement> logList;
 
-
+    @Step("Check text and position record in Log Window")
     public void checkWebElementInLogWindow(int positionElementInLogWindow, String textElementInLogWindow) {
         Assertions.assertThat(logList.get(positionElementInLogWindow - 1).getText().contains(textElementInLogWindow)).isTrue();
     }

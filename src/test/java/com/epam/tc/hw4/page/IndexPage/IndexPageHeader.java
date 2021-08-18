@@ -29,7 +29,7 @@ public class IndexPageHeader extends IndexPage {
     @FindBy(linkText = "Different elements")
     private WebElement servDiffElements;
 
-    @Step
+    @Step("Check names Header menu items: Home, Contact form, Service, Metals & Colors on header Index Page and displaying their")
     public void checkItemsHeaderMenu() {
         Assertions.assertThat(menuHome.getText().toUpperCase(Locale.ROOT)).isEqualTo("HOME");
         Assertions.assertThat(menuHome.isDisplayed());
@@ -41,7 +41,7 @@ public class IndexPageHeader extends IndexPage {
         Assertions.assertThat(menuMetCol.isDisplayed());
     }
 
-    @Step
+    @Step("Open DiffElement Page")
     public void openDiffElementPage() {
         menuServ.click();
         servDiffElements.click();

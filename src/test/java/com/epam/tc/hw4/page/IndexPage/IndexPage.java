@@ -53,18 +53,13 @@ public class IndexPage extends BasePage {
         this.driver = driver;
     }
 
-    @Step
-    public void checkTitle() {
-        Assertions.assertThat(driver.getTitle()).isEqualTo("Home Page");
-    }
-
-    @Step
+    @Step("Check login")
     public void checkLogin() {
         Assertions.assertThat(userName.getText()).isEqualTo(propUtil.getValue("user.login"));
         Assertions.assertThat(userName.isDisplayed());
     }
 
-    @Step
+    @Step("Login in Index Page")
     public void login() {
         profilePhoto.click();
         nameLoginField.sendKeys(propUtil.getValue("user.name"));
@@ -72,24 +67,24 @@ public class IndexPage extends BasePage {
         loginButton.click();
     }
 
-    @Step
+    @Step("Check count images on Index Page")
     public void checkImgCount(int count) {
         Assertions.assertThat(imgIndexList.size()).isEqualTo(count);
     }
 
-    @Step
+    @Step("Check displayed image on Index Page")
     public void checkImgDisplayed() {
         for (int i = 0; i < imgIndexList.size(); i++) {
             Assertions.assertThat(imgIndexList.get(i).isDisplayed());
         }
     }
 
-    @Step
+    @Step("Check count Benefit Text blocks")
     public void checkBenefitTextCount(int count) {
         Assertions.assertThat(textBenefitList.size()).isEqualTo(count);
     }
 
-    @Step
+    @Step("Check displayed Benefit Text blocks")
     public void checkBenefitTextDisplayed() {
         for (int i = 0; i < textBenefitList.size(); i++) {
             Assertions.assertThat(textBenefitList.get(i).getText().replace("\n", " "))
@@ -97,26 +92,26 @@ public class IndexPage extends BasePage {
         }
     }
 
-    @Step
+    @Step("Check frame with Button enabled")
     public void checkFrameWthButtonEnabled() {
         Assertions.assertThat(frameWthButton.isEnabled());
     }
 
     private String windowHomePage = "";
 
-    @Step
+    @Step("Switch to iframe")
     public String switchToIframe() {
         windowHomePage = driver.getWindowHandle();
         driver.switchTo().frame("frame");
         return windowHomePage;
     }
 
-    @Step
+    @Step("Switch to Window Home")
     public void switchToWindowHome() {
         driver.switchTo().window(windowHomePage);
     }
 
-    @Step
+    @Step("Check frame button enabled")
     public void checkFrameButtonEnabled() {
         Assertions.assertThat(frameButton.isEnabled());
     }

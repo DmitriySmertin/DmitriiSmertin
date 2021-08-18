@@ -30,18 +30,19 @@ public class DiffElementsPage extends BasePage {
     @FindBy(xpath = "//option[text()='Yellow']")
     private WebElement yellowColor;
 
+    @Step("Select Water checkbox")
     public void selectWater() {
         checkBoxWater.click();
     }
-
+    @Step("Select Wind checkbox")
     public void selectWind() {
         checkBoxWind.click();
     }
-
+    @Step("Select Selen radiobutton")
     public void selectSelen() {
         radioButtSelen.click();
     }
-
+    @Step("Select Yellow in dropdown list")
     public void selectYellow() {
         dropdownColors.click();
         yellowColor.click();

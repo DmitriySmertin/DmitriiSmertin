@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class FailedTest extends BasePage {
 
-    @Test
+    @Test(description = "Failed test")
     public void indexPageLoginAndFillingPageContentFailedTest() {
 
         IndexPage indexPage = new IndexPage(driver);

@@ -20,12 +20,12 @@ public class IndexPageLeftMenu extends IndexPage {
     @FindBy(css = "div#mCSB_1_container ul.sidebar-menu.left > li")
     List<WebElement> leftMenuItemsList;
 
-    @Step
+    @Step("Check {count} count left menu items")
     public void checkCountLeftMenuItems(int count) {
         Assertions.assertThat(leftMenuItemsList.size()).isEqualTo(count);
     }
 
-    @Step
+    @Step("Check text left menu items displayed")
     public void checkTextAndDisplayedItems() {
         for (int i = 0; i < leftMenuItemsList.size(); i++) {
             Assertions.assertThat(leftMenuItemsList.get(i).isDisplayed());

@@ -12,9 +12,10 @@ import static io.qameta.allure.Allure.step;
 
 public class Exercise1 extends BasePage {
 
-    @Test()
-    @Feature("Login IndexPage")
-    @Story("Testing the login and filling in the Index Page content")
+    @Test(description = "Test login and filling content Index Page")
+    @Feature("Login")
+    @Story("Login in IndexPage")
+    @Story("Elements are present on the page")
     public void indexPageLoginAndFillingPageContentTest() {
         attachProperty();
         IndexPage indexPage = new IndexPage(driver);
@@ -47,7 +48,6 @@ public class Exercise1 extends BasePage {
         leftMenu.checkCountLeftMenuItems(5);
         leftMenu.checkTextAndDisplayedItems();
         step("12. Close Browser(configured in BasePage.class)");
-
     }
 
 }

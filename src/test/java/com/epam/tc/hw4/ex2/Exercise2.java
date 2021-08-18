@@ -13,11 +13,12 @@ import static io.qameta.allure.Allure.step;
 
 public class Exercise2 extends BasePage {
 
-    @Test()
-    @Feature("Login IndexPage")
-    @Feature("WebElements on Different Elements Page")
-    @Feature("LogWindow on Different Element Page")
-    @Story("Testing the login Index Page and the functioning of web elements on the Different Elements Page")
+    @Test(description = "Test login,change the states of elements on DiffElements Page and records of log window")
+    @Feature("Login")
+    @Feature("Elements on DiffElements Page")
+    @Feature("LogWindow")
+    @Story("Login in IndexPage")
+    @Story("The log window records changes in the states of the elements")
     public void indexPageLoginAndDifferentElementsPageTest() {
         attachProperty();
         IndexPage indexPage = new IndexPage(driver);
