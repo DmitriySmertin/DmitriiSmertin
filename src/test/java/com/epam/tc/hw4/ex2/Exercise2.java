@@ -14,10 +14,10 @@ import static io.qameta.allure.Allure.step;
 public class Exercise2 extends BasePage {
 
     @Test(description = "Test login,change the states of elements on DiffElements Page and records of log window")
-    @Feature("Login")
-    @Feature("Elements on DiffElements Page")
-    @Feature("LogWindow")
-    @Story("Login in IndexPage")
+    @Feature("Authorization")
+    @Feature("WebElements on DiffElementPage")
+    @Feature("LogWindow on DiffElementPage")
+    @Story("Login on IndexPage")
     @Story("The log window records changes in the states of the elements")
     public void indexPageLoginAndDifferentElementsPageTest() {
         attachProperty();

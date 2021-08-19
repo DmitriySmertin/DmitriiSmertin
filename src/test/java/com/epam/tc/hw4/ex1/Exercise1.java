@@ -13,9 +13,12 @@ import static io.qameta.allure.Allure.step;
 public class Exercise1 extends BasePage {
 
     @Test(description = "Test login and filling content Index Page")
-    @Feature("Login")
-    @Story("Login in IndexPage")
-    @Story("Elements are present on the page")
+    @Feature("Authorization")
+    @Feature("Header")
+    @Feature("Left Menu")
+    @Feature("Frame on IndexPage")
+    @Story("Login on IndexPage")
+
     public void indexPageLoginAndFillingPageContentTest() {
         attachProperty();
         IndexPage indexPage = new IndexPage(driver);
