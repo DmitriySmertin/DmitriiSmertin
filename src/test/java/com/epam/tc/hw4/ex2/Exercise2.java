@@ -15,8 +15,7 @@ public class Exercise2 extends BasePage {
 
     @Test(description = "Test login,change the states of elements on DiffElements Page and records of log window")
     @Feature("Authorization")
-    @Feature("WebElements on DiffElementPage")
-    @Feature("LogWindow on DiffElementPage")
+    @Feature("Logging in the LogWindow")
     @Story("Login on IndexPage")
     @Story("The log window records changes in the states of the elements")
     public void indexPageLoginAndDifferentElementsPageTest() {

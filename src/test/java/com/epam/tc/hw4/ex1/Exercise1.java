@@ -14,9 +14,6 @@ public class Exercise1 extends BasePage {
 
     @Test(description = "Test login and filling content Index Page")
     @Feature("Authorization")
-    @Feature("Header")
-    @Feature("Left Menu")
-    @Feature("Frame on IndexPage")
     @Story("Login on IndexPage")
 
     public void indexPageLoginAndFillingPageContentTest() {
