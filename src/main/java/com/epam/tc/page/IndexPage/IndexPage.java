@@ -1,6 +1,6 @@
-package com.epam.tc.hw4.page.IndexPage;
+package com.epam.tc.page.IndexPage;
 
-import com.epam.tc.hw4.page.BasePage;
+import com.epam.tc.page.BasePage;
 import io.qameta.allure.Step;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +10,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static com.epam.tc.util.PropertiesUtil.getValue;
 
 
 public class IndexPage extends BasePage {
@@ -55,15 +57,15 @@ public class IndexPage extends BasePage {
 
     @Step("Check login")
     public void checkLogin() {
-        Assertions.assertThat(userName.getText()).isEqualTo(propUtil.getValue("user.login"));
+        Assertions.assertThat(userName.getText()).isEqualTo(getValue("user.login"));
         Assertions.assertThat(userName.isDisplayed());
     }
 
     @Step("Login in Index Page")
     public void login() {
         profilePhoto.click();
-        nameLoginField.sendKeys(propUtil.getValue("user.name"));
-        passLoginField.sendKeys(propUtil.getValue("user.pass"));
+        nameLoginField.sendKeys(getValue("user.name"));
+        passLoginField.sendKeys(getValue("user.pass"));
         loginButton.click();
     }
 

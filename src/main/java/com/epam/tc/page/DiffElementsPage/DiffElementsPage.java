@@ -1,8 +1,7 @@
-package com.epam.tc.hw4.page.DiffElementsPage;
+package com.epam.tc.page.DiffElementsPage;
 
-import com.epam.tc.hw3.page.BasePage;
+import com.epam.tc.page.BasePage;
 import io.qameta.allure.Step;
-import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,14 +33,17 @@ public class DiffElementsPage extends BasePage {
     public void selectWater() {
         checkBoxWater.click();
     }
+
     @Step("Select Wind checkbox")
     public void selectWind() {
         checkBoxWind.click();
     }
+
     @Step("Select Selen radiobutton")
     public void selectSelen() {
         radioButtSelen.click();
     }
+
     @Step("Select Yellow in dropdown list")
     public void selectYellow() {
         dropdownColors.click();

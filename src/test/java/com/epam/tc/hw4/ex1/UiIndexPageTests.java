@@ -1,26 +1,28 @@
 package com.epam.tc.hw4.ex1;
 
-import com.epam.tc.hw4.page.BasePage;
-import com.epam.tc.hw4.page.IndexPage.IndexPage;
-import com.epam.tc.hw4.page.IndexPage.IndexPageHeader;
-import com.epam.tc.hw4.page.IndexPage.IndexPageLeftMenu;
+import com.epam.tc.page.BasePage;
+import com.epam.tc.page.IndexPage.IndexPage;
+import com.epam.tc.page.IndexPage.IndexPageHeader;
+import com.epam.tc.page.IndexPage.IndexPageLeftMenu;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
+import static com.epam.tc.util.PropertiesUtil.getValue;
 import static io.qameta.allure.Allure.step;
 
-public class Exercise1 extends BasePage {
+public class UiIndexPageTests extends BasePage {
 
     @Test(description = "Test login and filling content Index Page")
     @Feature("Authorization")
+    @Feature("Left Menu")
+    @Feature("Header")
     @Story("Login on IndexPage")
 
     public void indexPageLoginAndFillingPageContentTest() {
-        attachProperty();
         IndexPage indexPage = new IndexPage(driver);
         step("1. Open test site by URL");
-        indexPage.openPage(propUtil.getValue("url.index"));
+        indexPage.openPage(getValue("url.index"));
         step("2. Assert Browser title");
         indexPage.checkTitle("Home Page");
         step("3. Perform login");

@@ -1,26 +1,26 @@
 package com.epam.tc.hw3.ex2;
 
 import com.epam.tc.hw2.SetUpAndTearDown;
-import com.epam.tc.hw3.page.BasePage;
-import com.epam.tc.hw3.page.DiffElementsPage.DiffElementsLogWindow;
-import com.epam.tc.hw3.page.DiffElementsPage.DiffElementsPage;
-import com.epam.tc.hw3.page.IndexPage.IndexPage;
-import com.epam.tc.hw3.page.IndexPage.IndexPageHeader;
-import com.epam.tc.hw3.page.IndexPage.IndexPageLeftMenu;
+import com.epam.tc.page.DiffElementsPage.DiffElementsPage;
+import com.epam.tc.page.DiffElementsPage.DiffElementsLogWindow;
+import com.epam.tc.page.IndexPage.IndexPage;
+import com.epam.tc.page.BasePage;
+import com.epam.tc.page.IndexPage.IndexPageHeader;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-import java.util.List;
 
-public class Exercise2 extends BasePage {
+import static com.epam.tc.util.PropertiesUtil.getValue;
+
+public class UiDiffElementsPageTests extends BasePage {
 
     @Test
     public void indexPageLoginAndDifferentElementsPageTest() {
         IndexPage indexPage = new IndexPage(driver);
         //1. Open test site by URL
-        indexPage.openPage(propUtil.getValue("url.index"));
+        indexPage.openPage(getValue("url.index"));
         //2. Assert Browser title
         indexPage.checkTitle("Home Page");
         //3. Perform login

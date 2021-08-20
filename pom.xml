@@ -11,7 +11,6 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <testng.version>7.1.0</testng.version>
         <hamcrest.version>2.2</hamcrest.version>
         <assertj-core.version>3.4.1</assertj-core.version>
         <maven-surefire-plugin.defaultSuiteXmlFile>${project.build.testOutputDirectory}/testng/addAndSubtractSuite.xml
@@ -20,8 +19,11 @@
         <selenium-java.version>3.141.59</selenium-java.version>
         <calculator-1.0.version>1.0</calculator-1.0.version>
         <allure.version>2.13.2</allure.version>
-        <aspectj.version>1.9.5</aspectj.version>
         <lombok.version>1.18.20</lombok.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
+        <assertj.version>3.4.1</assertj.version>
+        <testng.version>7.1.0</testng.version>
+        <aspectj.version>1.9.5</aspectj.version>
     </properties>
 
     <build>
@@ -104,21 +106,9 @@
     </profiles>
     <dependencies>
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest</artifactId>
             <version>${hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -148,6 +138,18 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <reporting>

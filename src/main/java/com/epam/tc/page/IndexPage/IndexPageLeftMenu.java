@@ -1,4 +1,4 @@
-package com.epam.tc.hw4.page.IndexPage;
+package com.epam.tc.page.IndexPage;
 
 import io.qameta.allure.Step;
 import org.assertj.core.api.Assertions;

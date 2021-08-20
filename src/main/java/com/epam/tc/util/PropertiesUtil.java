@@ -1,4 +1,6 @@
-package com.epam.tc.hw3.util;
+package com.epam.tc.util;
+
+import io.qameta.allure.Step;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,10 +9,11 @@ import java.util.Properties;
 
 public class PropertiesUtil {
 
-    Properties prop = new Properties();
-    FileInputStream fis = null;
+    private static Properties prop = new Properties();
+    private static FileInputStream fis = null;
 
-    public String getValue(String key) {
+    @Step
+    public static String getValue(String key) {
         try {
             fis = new FileInputStream("./src/test/resources/application.property");
             prop.load(fis);

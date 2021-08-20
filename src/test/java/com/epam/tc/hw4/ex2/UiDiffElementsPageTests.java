@@ -1,29 +1,29 @@
 package com.epam.tc.hw4.ex2;
 
-import com.epam.tc.hw4.page.BasePage;
-import com.epam.tc.hw4.page.DiffElementsPage.DiffElementsLogWindow;
-import com.epam.tc.hw4.page.DiffElementsPage.DiffElementsPage;
-import com.epam.tc.hw4.page.IndexPage.IndexPage;
-import com.epam.tc.hw4.page.IndexPage.IndexPageHeader;
+import com.epam.tc.page.BasePage;
+import com.epam.tc.page.DiffElementsPage.DiffElementsLogWindow;
+import com.epam.tc.page.DiffElementsPage.DiffElementsPage;
+import com.epam.tc.page.IndexPage.IndexPage;
+import com.epam.tc.page.IndexPage.IndexPageHeader;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
+import static com.epam.tc.util.PropertiesUtil.getValue;
 import static io.qameta.allure.Allure.step;
 
-public class Exercise2 extends BasePage {
+public class UiDiffElementsPageTests extends BasePage {
 
     @Test(description = "Test login,change the states of elements on DiffElements Page and records of log window")
     @Feature("Authorization")
-    @Feature("Logging in the LogWindow")
+    @Feature("Log Window")
     @Story("Login on IndexPage")
-    @Story("The log window records changes in the states of the elements")
+    @Story("Logging in the LogWindow")
     public void indexPageLoginAndDifferentElementsPageTest() {
-        attachProperty();
         IndexPage indexPage = new IndexPage(driver);
         step("1. Open test site by URL");
         //1. Open test site by URL
-        indexPage.openPage(propUtil.getValue("url.index"));
+        indexPage.openPage(getValue("url.index"));
         step("2. Assert Browser title");
         indexPage.checkTitle("Home Page");
         step("3. Perform login");

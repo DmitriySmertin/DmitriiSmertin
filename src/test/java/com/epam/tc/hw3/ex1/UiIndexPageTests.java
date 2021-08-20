@@ -1,19 +1,22 @@
 package com.epam.tc.hw3.ex1;
 
-import com.epam.tc.hw3.page.BasePage;
-import com.epam.tc.hw3.page.IndexPage.IndexPageHeader;
-import com.epam.tc.hw3.page.IndexPage.IndexPage;
-import com.epam.tc.hw3.page.IndexPage.IndexPageLeftMenu;
+
+import com.epam.tc.page.IndexPage.IndexPageLeftMenu;
+import com.epam.tc.page.IndexPage.IndexPage;
+import com.epam.tc.page.BasePage;
+import com.epam.tc.page.IndexPage.IndexPageHeader;
 import org.testng.annotations.Test;
 
-public class Exercise1 extends BasePage {
+import static com.epam.tc.util.PropertiesUtil.getValue;
+
+public class UiIndexPageTests extends BasePage {
 
     @Test
     public void indexPageLoginAndFillingPageContentTest() {
 
         IndexPage indexPage = new IndexPage(driver);
         //1. Open test site by URL
-        indexPage.openPage(propUtil.getValue("url.index"));
+        indexPage.openPage(getValue("url.index"));
         //2. Assert Browser title
         indexPage.checkTitle("Home Page");
         //3. Perform login
