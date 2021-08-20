@@ -8,7 +8,7 @@ import java.io.InputStream;
 
 @UtilityClass
 public class AttachmentUtil {
-    @Attachment
+
     public void attachFromInputStream(final String name, InputStream inputStream) {
         Allure.addAttachment(name, inputStream);
     }
