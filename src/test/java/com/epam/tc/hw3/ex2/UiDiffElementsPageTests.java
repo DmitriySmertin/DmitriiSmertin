@@ -1,14 +1,8 @@
 package com.epam.tc.hw3.ex2;
 
-import com.epam.tc.hw2.SetUpAndTearDown;
-import com.epam.tc.page.DiffElementsPage.DiffElementsPage;
-import com.epam.tc.page.DiffElementsPage.DiffElementsLogWindow;
-import com.epam.tc.page.IndexPage.IndexPage;
+import com.epam.tc.page.DiffElementsPage;
+import com.epam.tc.page.IndexPage;
 import com.epam.tc.page.BasePage;
-import com.epam.tc.page.IndexPage.IndexPageHeader;
-import org.assertj.core.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 
@@ -28,7 +22,6 @@ public class UiDiffElementsPageTests extends BasePage {
         //4. Assert Username is loggined
         indexPage.checkLogin();
         //5. Open through the header menu Service -> Different Elements Page
-        IndexPageHeader header = new IndexPageHeader(driver);
         header.openDiffElementPage();
         DiffElementsPage diffElementsPage = new DiffElementsPage(driver);
         diffElementsPage.checkTitle("Different Elements");
@@ -41,7 +34,6 @@ public class UiDiffElementsPageTests extends BasePage {
         diffElementsPage.selectYellow();
         //* 9. Assert that
         //• for each checkbox there is an individual log row and value is corresponded to the status of checkbox;
-        DiffElementsLogWindow logWindow = new DiffElementsLogWindow(driver);
         logWindow.checkWebElementInLogWindow(4, "Water: condition changed to true");
         logWindow.checkWebElementInLogWindow(3, "Wind: condition changed to true");
         //•	for radio button there is a log row and value is corresponded to the status of radio button;

@@ -1,4 +1,4 @@
-package com.epam.tc.page.IndexPage;
+package com.epam.tc.component;
 
 import io.qameta.allure.Step;
 import org.assertj.core.api.Assertions;
@@ -9,8 +9,9 @@ import org.openqa.selenium.support.FindBy;
 import java.util.Arrays;
 import java.util.List;
 
-public class IndexPageLeftMenu extends IndexPage {
-    public IndexPageLeftMenu(WebDriver driver) {
+public class LeftMenu extends AbstractComponent{
+
+    public LeftMenu(WebDriver driver) {
         super(driver);
     }
 
@@ -32,5 +33,4 @@ public class IndexPageLeftMenu extends IndexPage {
             Assertions.assertThat(leftMenuItemsList.get(i).getText()).isEqualTo(TEXT_LEFT_MENU_LIST.get(i));
         }
     }
-
 }

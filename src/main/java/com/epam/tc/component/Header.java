@@ -1,4 +1,4 @@
-package com.epam.tc.page.IndexPage;
+package com.epam.tc.component;
 
 import io.qameta.allure.Step;
 import org.assertj.core.api.Assertions;
@@ -8,9 +8,10 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.Locale;
 
-public class IndexPageHeader extends IndexPage {
+public class Header extends AbstractComponent {
 
-    public IndexPageHeader(WebDriver driver) {
+
+    public Header(WebDriver driver) {
         super(driver);
     }
 

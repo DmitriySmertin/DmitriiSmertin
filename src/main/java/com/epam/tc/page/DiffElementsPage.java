@@ -1,4 +1,4 @@
-package com.epam.tc.page.DiffElementsPage;
+package com.epam.tc.page;
 
 import com.epam.tc.page.BasePage;
 import io.qameta.allure.Step;
@@ -49,6 +49,5 @@ public class DiffElementsPage extends BasePage {
         dropdownColors.click();
         yellowColor.click();
     }
-
 
 }
