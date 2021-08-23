@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import static com.epam.tc.util.PropertiesUtil.getValue;
 
@@ -62,10 +63,11 @@ public class IndexPage extends BasePage {
     }
 
     @Step("Login in Index Page")
-    public void login() {
+    public void login(String user) {
         profilePhoto.click();
-        nameLoginField.sendKeys(getValue("user.name"));
-        passLoginField.sendKeys(getValue("user.pass"));
+        user = user.replaceAll(" ", ".");
+        nameLoginField.sendKeys(getValue("user.name." + user.toLowerCase().trim()));
+        passLoginField.sendKeys(getValue("user.pass."+ user.toLowerCase().trim()));
         loginButton.click();
     }
 

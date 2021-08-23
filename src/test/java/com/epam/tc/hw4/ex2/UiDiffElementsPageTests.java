@@ -25,7 +25,7 @@ public class UiDiffElementsPageTests extends BasePage {
         step("2. Assert Browser title");
         indexPage.checkTitle("Home Page");
         step("3. Perform login");
-        indexPage.login();
+        indexPage.login(getValue("user.login"));
         step("4. Assert Username is loggined");
         indexPage.checkLogin();
         step("5. Open through the header menu Service -> Different Elements Page");

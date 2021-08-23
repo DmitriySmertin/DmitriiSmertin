@@ -24,7 +24,7 @@ public class UiIndexPageTests extends BasePage {
         step("2. Assert Browser title");
         indexPage.checkTitle("Home Page");
         step("3. Perform login");
-        indexPage.login();
+        indexPage.login(getValue("user.login"));
         step("4. Assert Username is loggined");
         indexPage.checkLogin();
         step("5. Assert that there are 4 items on the header section are displayed, and they have proper texts");

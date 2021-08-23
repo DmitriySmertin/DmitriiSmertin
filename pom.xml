@@ -104,6 +104,14 @@
                 </maven-surefire-plugin.defaultSuiteXmlFile>
             </properties>
         </profile>
+        <profile>
+            <id>cucumberHW5Profile</id>
+            <properties>
+                <maven-surefire-plugin.defaultSuiteXmlFile>
+                    ${project.build.testOutputDirectory}/testng/cucumberHW5Suite.xml
+                </maven-surefire-plugin.defaultSuiteXmlFile>
+            </properties>
+        </profile>
     </profiles>
     <dependencies>
         <dependency>
@@ -161,6 +169,11 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber-jvm</artifactId>
+            <version>${allure.version}</version>
         </dependency>
     </dependencies>
     <reporting>

@@ -30,6 +30,9 @@ public class Header extends AbstractComponent {
     @FindBy(linkText = "Different elements")
     private WebElement servDiffElements;
 
+    @FindBy(linkText = "User Table")
+    private WebElement servUserTable;
+
     @Step("Check names Header menu items: Home, Contact form, Service, Metals & Colors on header Index Page and displaying their")
     public void checkItemsHeaderMenu() {
         Assertions.assertThat(menuHome.getText().toUpperCase(Locale.ROOT)).isEqualTo("HOME");
@@ -46,6 +49,17 @@ public class Header extends AbstractComponent {
     public void openDiffElementPage() {
         menuServ.click();
         servDiffElements.click();
+    }
+
+    @Step("Open Service menu")
+    public void openServiceMenu() {
+        menuServ.click();
+    }
+
+    @Step("Open User Table")
+    public void openUserTable()
+    {
+        servUserTable.click();
     }
 
 
