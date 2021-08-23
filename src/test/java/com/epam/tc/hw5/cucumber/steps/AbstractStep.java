@@ -8,17 +8,14 @@ import static com.epam.tc.util.PropertiesUtil.getValue;
 
 public abstract class AbstractStep {
     protected IndexPage indexPage;
-    protected Header header;
 
     @Given("I open Index Page")
-    public void openIndexPage()
-    {
+    public void openIndexPage() {
         indexPage.openPage(getValue("url.index"));
     }
 
     @Given("I perform authorization")
-    public void authorization()
-    {
+    public void authorization() {
         indexPage.login();
     }
 

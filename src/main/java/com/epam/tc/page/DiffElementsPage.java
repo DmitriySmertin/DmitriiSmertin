@@ -1,5 +1,7 @@
 package com.epam.tc.page;
 
+import com.epam.tc.component.LeftMenu;
+import com.epam.tc.component.LogWindow;
 import com.epam.tc.page.BasePage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +14,7 @@ public class DiffElementsPage extends BasePage {
     public DiffElementsPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
+        logWindow = new LogWindow(driver);
     }
 
     @FindBy(xpath = "//label[text()[contains(.,'Water')]]/input")
