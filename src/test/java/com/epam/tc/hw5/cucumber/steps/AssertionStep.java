@@ -9,8 +9,8 @@ public class AssertionStep extends AbstractStep {
 
     @Then("All changes in the state of elements are reflected in the log window")
     public void checkLogWindow() {
-        logWindow.checkWebElementInLogWindow(3, "Wind: condition changed to true");
         logWindow.checkWebElementInLogWindow(4, "Water: condition changed to true");
+        logWindow.checkWebElementInLogWindow(3, "Wind: condition changed to true");
         logWindow.checkWebElementInLogWindow(2, "metal: value changed to Selen");
         logWindow.checkWebElementInLogWindow(1, "value changed to Yellow");
     }
@@ -44,5 +44,10 @@ public class AssertionStep extends AbstractStep {
         userTablePage.verificationCheckboxesDisplayedOnUserTable();
     }
 
+    @Then("User table should contain '<number>', '<user>', '<description>' following values:")
+    public void checkUserTables(int number, String user, String description)
+    {
+        userTablePage.checkUserTableNameUserDescr(number,user, description);
+    }
 
 }

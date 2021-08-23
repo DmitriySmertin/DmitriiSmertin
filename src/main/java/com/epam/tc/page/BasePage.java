@@ -42,6 +42,7 @@ public abstract class BasePage {
         driver = new ChromeDriver();
         header = new Header(driver);
         leftMenu = new LeftMenu(driver);
+        logWindow = new LogWindow(driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         testContext.setAttribute("driver", driver);

@@ -40,8 +40,8 @@ public class UiDiffElementsPageTests extends BasePage {
         step("8. Select in dropdown Yellow");
         diffElementsPage.selectYellow();
         step("9a. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox");
-        logWindow.checkWebElementInLogWindow(3, "Wind: condition changed to true");
         logWindow.checkWebElementInLogWindow(4, "Water: condition changed to true");
+        logWindow.checkWebElementInLogWindow(3, "Wind: condition changed to true");
         step("9b. Assert that for radio button there is a log row and value is corresponded to the status of radio button");
         logWindow.checkWebElementInLogWindow(2, "metal: value changed to Selen");
         step("9c. Assert that for dropdown there is a log row and value is corresponded to the selected value");
