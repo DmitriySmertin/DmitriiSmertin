@@ -6,10 +6,7 @@ import com.epam.tc.hw5.cucumber.context.TestContext;
 import com.epam.tc.page.DiffElementsPage;
 import com.epam.tc.page.IndexPage;
 import com.epam.tc.page.UserTablePage;
-import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
-
-import static com.epam.tc.util.PropertiesUtil.getValue;
 
 public abstract class AbstractStep {
     protected IndexPage indexPage;
@@ -17,7 +14,6 @@ public abstract class AbstractStep {
     protected Header header;
     protected DiffElementsPage diffElementsPage;
     protected LogWindow logWindow;
-
 
 
     public AbstractStep() {
@@ -28,7 +24,6 @@ public abstract class AbstractStep {
         diffElementsPage = new DiffElementsPage(driver);
         logWindow = new LogWindow(driver);
     }
-
 
 
 }

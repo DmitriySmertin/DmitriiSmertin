@@ -1,7 +1,5 @@
 package com.epam.tc.hw5.cucumber.context;
 
-import org.testng.annotations.Test;
-
 import java.util.HashMap;
 import java.util.Map;
 

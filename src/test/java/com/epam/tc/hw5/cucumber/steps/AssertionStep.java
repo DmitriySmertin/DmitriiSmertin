@@ -1,8 +1,12 @@
 package com.epam.tc.hw5.cucumber.steps;
 
-import io.cucumber.java.en.Then;
 
-import static io.qameta.allure.Allure.step;
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.Then;
+import org.assertj.core.api.Assertions;
+
+import java.util.List;
+import java.util.Map;
 
 public class AssertionStep extends AbstractStep {
 
@@ -44,9 +48,31 @@ public class AssertionStep extends AbstractStep {
         userTablePage.verificationCheckboxesDisplayedOnUserTable();
     }
 
-    @Then("^User table should contain \"(.*)\",\"(.*)\",\"(.*)\" following values:")
-    public void checkUserTables(int number, String user, String description) {
-        userTablePage.checkUserTableNameUserDescr(number, user, description);
+    @Then("User table should contain following values:")
+    public void checkUserTables(DataTable table) {
+        List<Map<String, String>> userList = table.asMaps(String.class, String.class);
+        for (int i = 0; i < userList.size(); i++)
+            userTablePage.checkUserTableNameUserDescr(
+                    Integer.parseInt(userList.get(i).get("number")),
+                    userList.get(i).get("user"),
+                    userList.get(i).get("description"));
+
+    }
+
+    @Then("droplist should contain values in column Type for user Roman:")
+    public void checkUserDroplistType(DataTable table) {
+        List<String> dropdownList = table.asList(String.class);
+        for (int i = 0; i < dropdownList.size() - 1; i++) {
+            String actualDropdownValue = userTablePage.getValueRoman().get(i);
+            String expectedDropdownValue = dropdownList.get(i + 1);
+            Assertions.assertThat(actualDropdownValue).isEqualTo(expectedDropdownValue);
+        }
+
+    }
+
+    @Then("{int} log row has {string} text in log section")
+    public void checkRowHasTextInLogWindow(int count, String text) {
+        logWindow.checkWebElementInLogWindow(count, text);
     }
 
 }

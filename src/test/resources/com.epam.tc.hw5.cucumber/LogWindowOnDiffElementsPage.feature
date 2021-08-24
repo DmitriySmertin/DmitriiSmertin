@@ -1,6 +1,6 @@
 Feature: Log Window on Different Elements Page
 
-  Scenario: Add entries to the Log Window when element states change on the DiffElement page
+  Scenario: Add log rows to the Log Window when element states change on the DiffElement page
     Given I open JDI GitHub site
     And I login as user "Roman Iovlev"
     When I open Different Elements Page

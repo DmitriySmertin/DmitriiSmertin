@@ -1,13 +1,11 @@
 package com.epam.tc.page;
 
-import io.cucumber.java.sl.In;
 import io.qameta.allure.Step;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.DataProvider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +16,6 @@ public class UserTablePage extends BasePage {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-
 
     @FindBy(css = "table#user-table tbody tr")
     List<WebElement> typeDropdownList;
@@ -32,14 +29,19 @@ public class UserTablePage extends BasePage {
     @FindBy(css = "div.user-descr input")
     List<WebElement> checkBoxesList;
 
-    List<Integer> typeIndexes = new ArrayList<Integer>();
+    @FindBy(xpath = "((//select)[1])//option")
+    List<WebElement> romanTypeList;
 
-    public void getTypeIndexesList(List<Integer> typeIndexes) {
-        for (int i = 0; i < typeDropdownList.size(); i++) {
+    @FindBy(id = "ivan")
+    WebElement ivanCheckbox;
+
+    public static List<Integer> typeIndexes = new ArrayList<Integer>();
+
+    public static <T> List<Integer> getIndexesList(List<T> list) {
+        for (int i = 0; i < list.size(); i++) {
             typeIndexes.add(i + 1);
         }
         return typeIndexes;
-
     }
 
     @Step("Check count type dropdown on user table on User Table Page")
@@ -92,11 +94,24 @@ public class UserTablePage extends BasePage {
 
     @Step("Check name, user, description block UserTable")
     public void checkUserTableNameUserDescr(int number, String user, String descr) {
-        Assertions.assertThat(number).isEqualTo(number);
+        getIndexesList(typeDropdownList);
+        Assertions.assertThat(number).isEqualTo(typeIndexes.get(number - 1));
         String expDescr = textDescriptionList.get(number - 1).getText().replaceAll("\n", " ");
         Assertions.assertThat(user).isEqualTo(userNameList.get(number - 1).getText());
         Assertions.assertThat(descr).isEqualTo(expDescr);
     }
 
+    public List<String> getValueRoman() {
+        List<String> romanValue = new ArrayList<>();
+        for (int i = 0; i < romanTypeList.size(); i++) {
+            romanValue.add(romanTypeList.get(i).getText());
+        }
+        return romanValue;
+    }
+
+    @Step("Click for checkbox Ivan")
+    public void enableCheckboxIvan() {
+        ivanCheckbox.click();
+    }
 
 }

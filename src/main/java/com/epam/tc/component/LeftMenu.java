@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.Arrays;
 import java.util.List;
 
-public class LeftMenu extends AbstractComponent{
+public class LeftMenu extends AbstractComponent {
 
     public LeftMenu(WebDriver driver) {
         super(driver);

@@ -1,7 +1,5 @@
 package com.epam.tc.hw5.cucumber.steps;
 
-import com.epam.tc.component.Header;
-import com.epam.tc.page.DiffElementsPage;
 import io.cucumber.java.en.When;
 
 import java.util.Locale;
@@ -68,15 +66,26 @@ public class ActionStep extends AbstractStep {
     }
 
     @When("I click on {string} button in Service dropdown")
-    public void selectItemInServiceDropdown (String item)
-    {
-        switch (item.toLowerCase(Locale.ROOT))
-        {
+    public void selectItemInServiceDropdown(String item) {
+        switch (item.toLowerCase(Locale.ROOT)) {
             case "user table":
                 header.openUserTable();
                 break;
             default:
                 System.out.println(item + " item not exist");
+                break;
+        }
+
+    }
+
+    @When("When I select 'vip' checkbox for {string}")
+    public void selectVipCheckbox(String userName) {
+        switch (userName.toLowerCase(Locale.ROOT)) {
+            case "sergey ivan":
+                userTablePage.enableCheckboxIvan();
+                break;
+            default:
+                System.out.println(userName + " item not exist");
                 break;
         }
 

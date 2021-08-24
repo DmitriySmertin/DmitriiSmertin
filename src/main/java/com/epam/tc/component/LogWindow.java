@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class LogWindow extends AbstractComponent{
+public class LogWindow extends AbstractComponent {
     public LogWindow(WebDriver driver) {
         super(driver);
     }
@@ -20,4 +20,5 @@ public class LogWindow extends AbstractComponent{
     public void checkWebElementInLogWindow(int positionElementInLogWindow, String textElementInLogWindow) {
         Assertions.assertThat(logList.get(positionElementInLogWindow - 1).getText().contains(textElementInLogWindow)).isTrue();
     }
+
 }

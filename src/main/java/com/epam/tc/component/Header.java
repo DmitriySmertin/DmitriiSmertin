@@ -57,8 +57,7 @@ public class Header extends AbstractComponent {
     }
 
     @Step("Open User Table")
-    public void openUserTable()
-    {
+    public void openUserTable() {
         servUserTable.click();
     }
 
