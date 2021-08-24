@@ -1,5 +1,6 @@
 package com.epam.tc.page;
 
+import io.cucumber.java.sl.In;
 import io.qameta.allure.Step;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.DataProvider;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserTablePage extends BasePage {
@@ -29,6 +31,16 @@ public class UserTablePage extends BasePage {
 
     @FindBy(css = "div.user-descr input")
     List<WebElement> checkBoxesList;
+
+    List<Integer> typeIndexes = new ArrayList<Integer>();
+
+    public void getTypeIndexesList(List<Integer> typeIndexes) {
+        for (int i = 0; i < typeDropdownList.size(); i++) {
+            typeIndexes.add(i + 1);
+        }
+        return typeIndexes;
+
+    }
 
     @Step("Check count type dropdown on user table on User Table Page")
     public void checkCountTypeDropdownOnUserTable(int count) {
@@ -80,11 +92,10 @@ public class UserTablePage extends BasePage {
 
     @Step("Check name, user, description block UserTable")
     public void checkUserTableNameUserDescr(int number, String user, String descr) {
-        for (int i = 0; i < typeDropdownList.size(); i++) {
-            Assertions.assertThat(number).isEqualTo(i + 1);
-            Assertions.assertThat(user).isEqualTo(userNameList.get(i).getText());
-            Assertions.assertThat(descr).isEqualTo(textDescriptionList.get(i).getText());
-        }
+        Assertions.assertThat(number).isEqualTo(number);
+        String expDescr = textDescriptionList.get(number - 1).getText().replaceAll("\n", " ");
+        Assertions.assertThat(user).isEqualTo(userNameList.get(number - 1).getText());
+        Assertions.assertThat(descr).isEqualTo(expDescr);
     }
 
 

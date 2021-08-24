@@ -37,17 +37,16 @@ public class AssertionStep extends AbstractStep {
         userTablePage.checkCountTextDescriptionOnUserTable(count);
         userTablePage.checkTextDescriptionDisplayedOnUserTable();
     }
+
     @Then("{int} checkboxes should be displayed on Users Table on User Table Page")
-    public void verificationCheckboxesOnUserTable(int count)
-    {
+    public void verificationCheckboxesOnUserTable(int count) {
         userTablePage.checkCountCheckboxesOnUserTable(count);
         userTablePage.verificationCheckboxesDisplayedOnUserTable();
     }
 
-    @Then("User table should contain '<number>', '<user>', '<description>' following values:")
-    public void checkUserTables(int number, String user, String description)
-    {
-        userTablePage.checkUserTableNameUserDescr(number,user, description);
+    @Then("^User table should contain \"(.*)\",\"(.*)\",\"(.*)\" following values:")
+    public void checkUserTables(int number, String user, String description) {
+        userTablePage.checkUserTableNameUserDescr(number, user, description);
     }
 
 }
