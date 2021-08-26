@@ -112,6 +112,14 @@
                 </maven-surefire-plugin.defaultSuiteXmlFile>
             </properties>
         </profile>
+        <profile>
+            <id>seleniumGridHW6Profile</id>
+            <properties>
+                <maven-surefire-plugin.defaultSuiteXmlFile>
+                    ${project.build.testOutputDirectory}/testng/seleniumGridHW6Suite.xml
+                </maven-surefire-plugin.defaultSuiteXmlFile>
+            </properties>
+        </profile>
     </profiles>
     <dependencies>
         <dependency>

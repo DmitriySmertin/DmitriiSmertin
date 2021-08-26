@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="seleniumGridHW6Suite">
+    <listeners>
+        <listener class-name="com.epam.tc.hw4.listeners.ScreenshotListener"/>
+    </listeners>
+    <test name="seleniumGridHW6Test">
+        <classes>
+            <class name="com.epam.tc.hw6.ex1.UiIndexPageTests"/>
+            <class name="com.epam.tc.hw6.ex2.UiDiffElementsPageTests"/>
+        </classes>
+    </test>
+</suite>

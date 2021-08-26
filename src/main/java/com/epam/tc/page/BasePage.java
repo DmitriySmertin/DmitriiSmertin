@@ -3,13 +3,12 @@ package com.epam.tc.page;
 import com.epam.tc.component.Header;
 import com.epam.tc.component.LeftMenu;
 import com.epam.tc.component.LogWindow;
-import com.epam.tc.util.PropertiesUtil;
+import com.epam.tc.driver.WebDriverSingleton;
 import com.epam.tc.util.AttachmentUtil;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.epam.tc.util.PropertiesUtil;
 import io.qameta.allure.Step;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -38,8 +37,7 @@ public abstract class BasePage {
 
     @BeforeClass()
     public void setUp(ITestContext testContext) {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        driver = WebDriverSingleton.getDriver();
         header = new Header(driver);
         leftMenu = new LeftMenu(driver);
         logWindow = new LogWindow(driver);
@@ -51,10 +49,7 @@ public abstract class BasePage {
 
     @AfterClass()
     public void tearDown() {
-        if (driver != null) {
-            driver.close();
-        }
-        driver = null;
+        WebDriverSingleton.closeDriver();
     }
 
     public void attachProperty() {
