@@ -1,9 +1,7 @@
 package com.epam.tc.hw4.ex1;
 
 import com.epam.tc.page.BasePage;
-import com.epam.tc.page.IndexPage.IndexPage;
-import com.epam.tc.page.IndexPage.IndexPageHeader;
-import com.epam.tc.page.IndexPage.IndexPageLeftMenu;
+import com.epam.tc.page.IndexPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
@@ -26,11 +24,10 @@ public class UiIndexPageTests extends BasePage {
         step("2. Assert Browser title");
         indexPage.checkTitle("Home Page");
         step("3. Perform login");
-        indexPage.login();
+        indexPage.login(getValue("user.login"));
         step("4. Assert Username is loggined");
         indexPage.checkLogin();
         step("5. Assert that there are 4 items on the header section are displayed, and they have proper texts");
-        IndexPageHeader header = new IndexPageHeader(driver);
         header.checkItemsHeaderMenu();
         step("6. Assert that there are 4 images on the Index Page, and they are displayed");
         indexPage.checkImgCount(4);
@@ -46,7 +43,6 @@ public class UiIndexPageTests extends BasePage {
         step("10. Switch to original window back");
         indexPage.switchToWindowHome();
         step("11. Assert that there are 5 items in the Left Section are displayed, and they have proper text");
-        IndexPageLeftMenu leftMenu = new IndexPageLeftMenu(driver);
         leftMenu.checkCountLeftMenuItems(5);
         leftMenu.checkTextAndDisplayedItems();
         step("12. Close Browser(configured in BasePage.class)");
