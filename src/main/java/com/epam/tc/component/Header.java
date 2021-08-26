@@ -1,4 +1,4 @@
-package com.epam.tc.page.IndexPage;
+package com.epam.tc.component;
 
 import io.qameta.allure.Step;
 import org.assertj.core.api.Assertions;
@@ -8,9 +8,10 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.Locale;
 
-public class IndexPageHeader extends IndexPage {
+public class Header extends AbstractComponent {
 
-    public IndexPageHeader(WebDriver driver) {
+
+    public Header(WebDriver driver) {
         super(driver);
     }
 
@@ -29,6 +30,9 @@ public class IndexPageHeader extends IndexPage {
     @FindBy(linkText = "Different elements")
     private WebElement servDiffElements;
 
+    @FindBy(linkText = "User Table")
+    private WebElement servUserTable;
+
     @Step("Check names Header menu items: Home, Contact form, Service, Metals & Colors on header Index Page and displaying their")
     public void checkItemsHeaderMenu() {
         Assertions.assertThat(menuHome.getText().toUpperCase(Locale.ROOT)).isEqualTo("HOME");
@@ -45,6 +49,16 @@ public class IndexPageHeader extends IndexPage {
     public void openDiffElementPage() {
         menuServ.click();
         servDiffElements.click();
+    }
+
+    @Step("Open Service menu")
+    public void openServiceMenu() {
+        menuServ.click();
+    }
+
+    @Step("Open User Table")
+    public void openUserTable() {
+        servUserTable.click();
     }
 
 

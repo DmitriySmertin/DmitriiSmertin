@@ -1,9 +1,11 @@
 package com.epam.tc.page;
 
+import com.epam.tc.component.Header;
+import com.epam.tc.component.LeftMenu;
+import com.epam.tc.component.LogWindow;
 import com.epam.tc.util.PropertiesUtil;
 import com.epam.tc.util.AttachmentUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
@@ -20,6 +22,9 @@ import java.util.concurrent.TimeUnit;
 public abstract class BasePage {
     protected WebDriver driver;
     PropertiesUtil propUtil = new PropertiesUtil();
+    protected Header header;
+    protected LeftMenu leftMenu;
+    protected LogWindow logWindow;
 
     @Step("Open page {url}")
     public void openPage(String url) {
@@ -35,6 +40,9 @@ public abstract class BasePage {
     public void setUp(ITestContext testContext) {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        header = new Header(driver);
+        leftMenu = new LeftMenu(driver);
+        logWindow = new LogWindow(driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         testContext.setAttribute("driver", driver);

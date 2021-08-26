@@ -1,4 +1,4 @@
-package com.epam.tc.page.DiffElementsPage;
+package com.epam.tc.component;
 
 import io.qameta.allure.Step;
 import org.assertj.core.api.Assertions;
@@ -8,10 +8,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class DiffElementsLogWindow extends DiffElementsPage {
-
-
-    public DiffElementsLogWindow(WebDriver driver) {
+public class LogWindow extends AbstractComponent {
+    public LogWindow(WebDriver driver) {
         super(driver);
     }
 

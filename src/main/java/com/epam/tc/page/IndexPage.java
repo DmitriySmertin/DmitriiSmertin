@@ -1,6 +1,5 @@
-package com.epam.tc.page.IndexPage;
+package com.epam.tc.page;
 
-import com.epam.tc.page.BasePage;
 import io.qameta.allure.Step;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
@@ -15,14 +14,12 @@ import static com.epam.tc.util.PropertiesUtil.getValue;
 
 
 public class IndexPage extends BasePage {
-    //DATA
     private final List<String> TEXT_BENEFIT_LIST = Arrays.asList(
             "To include good practices and ideas from successful EPAM project",
             "To be flexible and customizable",
             "To be multiplatform",
             "Already have good base (about 20 internal and some external projects), wish to get more…");
 
-    //LOCATORS
     @FindBy(className = "profile-photo")
     private WebElement profilePhoto;
 
@@ -62,10 +59,11 @@ public class IndexPage extends BasePage {
     }
 
     @Step("Login in Index Page")
-    public void login() {
+    public void login(String user) {
         profilePhoto.click();
-        nameLoginField.sendKeys(getValue("user.name"));
-        passLoginField.sendKeys(getValue("user.pass"));
+        user = user.replaceAll(" ", ".");
+        nameLoginField.sendKeys(getValue("user.name." + user.toLowerCase().trim()));
+        passLoginField.sendKeys(getValue("user.pass." + user.toLowerCase().trim()));
         loginButton.click();
     }
 
