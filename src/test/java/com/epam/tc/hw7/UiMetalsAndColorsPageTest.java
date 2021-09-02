@@ -12,6 +12,7 @@ import static com.epam.jdi.form.MetalsAndColorsForm.vegetable;
 import static com.epam.jdi.form.MetalsAndColorsForm.vegetablesMultiDropdown;
 import static com.epam.jdi.page.MetalsAndColorsPage.metalsAndColorsForm;
 import static com.epam.jdi.util.TextResultWindowCreatorUtil.expectResult;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class UiMetalsAndColorsPageTest implements TestInit {
 
@@ -28,7 +29,7 @@ public class UiMetalsAndColorsPageTest implements TestInit {
         metalsAndColorsForm.submit();
         List<String> actResult = metAndColPage.getResult();
         List<String> expResult = expectResult(metalsAndColorsInfo);
-        Assertions.assertThat(actResult)
+        assertThat(actResult)
                 .as("Actual text doesn't match with expected result")
                 .isEqualTo(expResult);
         homePage.logout();
