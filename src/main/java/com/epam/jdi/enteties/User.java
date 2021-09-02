@@ -1,6 +1,8 @@
 package com.epam.jdi.enteties;
 
-public class User {
+import com.epam.jdi.tools.DataClass;
+
+public class User extends DataClass<User> {
 
     public final static User ROMAN = new User("Roman", "Jdi1234", "ROMAN IOVLEV");
 

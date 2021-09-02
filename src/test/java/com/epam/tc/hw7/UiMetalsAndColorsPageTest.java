@@ -1,18 +1,14 @@
 package com.epam.tc.hw7;
 
-import com.epam.jdi.JdiSite;
 import com.epam.jdi.enteties.MetalsAndColorsInfo;
-import com.epam.jdi.form.MetalsAndColorsForm;
-import com.epam.jdi.util.GsonParser;
-import org.assertj.core.api.Assertions;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
+import java.util.List;
 
 import static com.epam.jdi.JdiSite.*;
-import static com.epam.jdi.enteties.User.*;
+import static com.epam.jdi.enteties.User.ROMAN;
+import static com.epam.jdi.form.MetalsAndColorsForm.vegetable;
+import static com.epam.jdi.form.MetalsAndColorsForm.vegetablesMultiDropdown;
 import static com.epam.jdi.page.MetalsAndColorsPage.metalsAndColorsForm;
 
 public class UiMetalsAndColorsPageTest implements TestInit {
@@ -26,12 +22,15 @@ public class UiMetalsAndColorsPageTest implements TestInit {
 
     @Test(dataProvider = "dataJson", dataProviderClass = JsonDataProvider.class)
     public void resultFormOnMetalsAndColorsPageTest(MetalsAndColorsInfo metalsAndColorsInfo) {
+
         header.select("Metals & Colors");
         metAndColPage.checkOpened();
+        vegetable.click();
+        vegetablesMultiDropdown.select("Vegetables");
         metalsAndColorsForm.fill(metalsAndColorsInfo);
         metalsAndColorsForm.submit();
-        Assertions.assertThat(metAndColPage.getResult()).isEqualTo(metAndColPage.expectResult(metalsAndColorsInfo));
-
-
+        List<String> actResult = metAndColPage.getResult();
+        List<String> expResult = metAndColPage.expectResult(metalsAndColorsInfo);
+//        assertThat(actResult).isEqualTo(expResult);
     }
 }

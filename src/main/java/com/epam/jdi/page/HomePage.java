@@ -8,6 +8,8 @@ import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.light.elements.pageobjects.annotations.FindBy;
 import com.epam.jdi.light.elements.pageobjects.annotations.Title;
 import com.epam.jdi.light.elements.pageobjects.annotations.Url;
+import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
+import com.epam.jdi.light.ui.html.elements.common.Button;
 import com.epam.jdi.light.ui.html.elements.common.Icon;
 
 @Url("/index.html")
@@ -19,10 +21,16 @@ public class HomePage extends WebPage {
     public static LoginForm loginForm;
     @FindBy(id = "user-name")
     public static Label userName;
+    @UI(".btn-login")
+    public static Button logoutButton;
 
     public void login(User user) {
         userIcon.click();
         loginForm.login(user);
+    }
+    public static void logout() {
+        userIcon.click();
+        logoutButton.click();
     }
 
     public String getUserName() {

@@ -40,7 +40,7 @@ public class MetalsAndColorsForm extends Form<MetalsAndColorsInfo> {
     @UI("section.horizontal-group input")
     public static RadioButtons summary;
 
-    @JDropdown(root = "div[ui=droplist]",
+    @JDropdown(root = "#vegetables",
             value = ".filter-option",
             list = "li",
             expand = ".caret")
@@ -60,16 +60,15 @@ public class MetalsAndColorsForm extends Form<MetalsAndColorsInfo> {
         metalsAndColors.getElements().forEach(elementsChecklist::select);
         colors.select(metalsAndColors.getColor());
         metals.select(metalsAndColors.getMetals());
-        vegetable.click();
-        if (selectedVegetable.isDisplayed()) {
-            vegetablesMultiDropdown.select("Vegetables");
+        for (String vegetable : metalsAndColors.getVegetables()) {
+            vegetablesMultiDropdown.select(vegetable);
         }
-        metalsAndColors.getVegetables().forEach(vegetablesMultiDropdown::select);
     }
 
     @Override
     public void submit() {
         submitBtn.click();
-    }
 
+
+    }
 }

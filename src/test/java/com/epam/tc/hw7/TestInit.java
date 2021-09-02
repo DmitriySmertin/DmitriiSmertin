@@ -1,6 +1,8 @@
 package com.epam.tc.hw7;
 
 import com.epam.jdi.JdiSite;
+import com.epam.jdi.page.HomePage;
+import com.epam.tc.page.IndexPage;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
@@ -15,8 +17,8 @@ public interface TestInit {
     }
 
     @AfterSuite(alwaysRun = true)
-    public static void TearDown()
-    {
+    public static void TearDown() {
+        HomePage.logout();
         killAllSeleniumDrivers();
     }
 }
