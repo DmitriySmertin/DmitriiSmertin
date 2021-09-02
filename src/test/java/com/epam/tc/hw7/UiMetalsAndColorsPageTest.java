@@ -1,10 +1,8 @@
 package com.epam.tc.hw7;
 
 import com.epam.jdi.enteties.MetalsAndColorsInfo;
-import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
-import java.util.List;
 
 import static com.epam.jdi.JdiSite.*;
 import static com.epam.jdi.enteties.User.ROMAN;
@@ -27,11 +25,9 @@ public class UiMetalsAndColorsPageTest implements TestInit {
         vegetablesMultiDropdown.select("Vegetables");
         metalsAndColorsForm.fill(metalsAndColorsInfo);
         metalsAndColorsForm.submit();
-        List<String> actResult = metAndColPage.getResult();
-        List<String> expResult = expectResult(metalsAndColorsInfo);
-        assertThat(actResult)
+        assertThat(metAndColPage.getResult())
                 .as("Actual text doesn't match with expected result")
-                .isEqualTo(expResult);
+                .isEqualTo(expectResult(metalsAndColorsInfo));
         homePage.logout();
     }
 }
