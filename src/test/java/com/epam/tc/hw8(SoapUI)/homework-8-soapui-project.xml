@@ -293,16 +293,13 @@
          <spel:text>?</spel:text>\r
       </spel:CheckTextsRequest>\r
    </soap:Body>\r
-</soap:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://speller.yandex.net/services/spellservice/SpellServiceSoap/checkTextsRequest"/></con:call></con:operation></con:interface><con:testSuite id="ec7658c7-1d35-4af3-909a-542b51c25b17" name="CheckTextSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="1aa939e0-7496-4621-9183-058d7b7d6ef8" failOnError="false" failTestCaseOnErrors="false" keepSession="false" maxResults="0" name="PositiveCheckTextTest" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="groovy" name="Groovy Script" id="1cf22078-1eaa-4e54-9fc6-3fc3f8f0f6de"><con:settings/><con:config><script>def words = ["fatther", "motherrr", "сенхрофазотрон"]
-def correctedWords = ["father", "mother", "синхрофазотрон"]
-int i =0;
-for(word in words) {
-		testRunner.testCase.setPropertyValue("word", word)
-		testRunner.testCase.setPropertyValue("correctWord", correctedWords[i])
-		testRunner.runTestStepByName("checkText")
-		i++;
-}
-    </script></con:config></con:testStep><con:testStep type="request" id="a8d4f386-b969-4574-9190-4e9e55090f16" name="checkText" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpellServiceSoap</con:interface><con:operation>checkText</con:operation><con:request name="checkText" id="526256d2-fe43-4f4f-a700-4f2ddbf629ab"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://speller.yandex.net/services/spellservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spel="http://speller.yandex.net/services/spellservice">\r
+</soap:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://speller.yandex.net/services/spellservice/SpellServiceSoap/checkTextsRequest"/></con:call></con:operation></con:interface><con:testSuite id="ec7658c7-1d35-4af3-909a-542b51c25b17" name="CheckTextSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="1aa939e0-7496-4621-9183-058d7b7d6ef8" failOnError="false" failTestCaseOnErrors="false" keepSession="false" maxResults="0" name="PositiveCheckTextTest" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="groovy" name="Groovy Script" id="1cf22078-1eaa-4e54-9fc6-3fc3f8f0f6de"><con:settings/><con:config><script>String [ ] [ ] data = [["fatther", "father"],["helo", "hello"],["сенхрофазотрон", "синхрофазотрон"]]
+
+for(int i = 0; i&lt;data.length; i++){ 
+	testRunner.testCase.setPropertyValue("word", data[i][0]);
+	testRunner.testCase.setPropertyValue("correctword", data[i][1]);
+	testRunner.runTestStepByName("checkText")
+}	</script></con:config></con:testStep><con:testStep type="request" id="a8d4f386-b969-4574-9190-4e9e55090f16" name="checkText" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpellServiceSoap</con:interface><con:operation>checkText</con:operation><con:request name="checkText" id="526256d2-fe43-4f4f-a700-4f2ddbf629ab"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://speller.yandex.net/services/spellservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spel="http://speller.yandex.net/services/spellservice">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <spel:CheckTextRequest lang="" options="0" format="">\r
@@ -321,15 +318,13 @@ for(lang in langs) {
          <spel:text>Hello</spel:text>
       </spel:CheckTextRequest>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:assertion type="Invalid HTTP Status Codes" id="6ae7e3b8-a00c-497e-ae23-3a02e1101171" name="Invalid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="86cac315-1f6a-49b5-8e4c-c7daea99a84f" name="Contains"><con:configuration><token>SpellService: Invalid parameter 'lang'</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>lang</con:name><con:value>ru</con:value></con:property></con:properties></con:testCase><con:testCase id="5d9e26d3-ea8c-4e6b-bc3c-e0e210d5f6b6" failOnError="false" failTestCaseOnErrors="false" keepSession="false" maxResults="0" name="PositiveErrorAttributeLenTest" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="groovy" name="Groovy Script" id="fada7ff6-0bcd-4ae2-ab6f-92747fd1433e"><con:settings/><con:config><script>def words = ["fatther", "helo", "сенхрофазотрон"]
-def length = ["7", "4", "14"]
-int i =0;
-for(word in words){ 
-		testRunner.testCase.setPropertyValue("word", word)
-		testRunner.testCase.setPropertyValue("len", length[i])
-		testRunner.runTestStepByName("checkText")
-		i++;
-}
+</soapenv:Envelope>]]></con:request><con:assertion type="Invalid HTTP Status Codes" id="6ae7e3b8-a00c-497e-ae23-3a02e1101171" name="Invalid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="86cac315-1f6a-49b5-8e4c-c7daea99a84f" name="Contains"><con:configuration><token>SpellService: Invalid parameter 'lang'</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>lang</con:name><con:value>ru</con:value></con:property></con:properties></con:testCase><con:testCase id="5d9e26d3-ea8c-4e6b-bc3c-e0e210d5f6b6" failOnError="false" failTestCaseOnErrors="false" keepSession="false" maxResults="0" name="PositiveErrorAttributeLenTest" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="groovy" name="Groovy Script" id="fada7ff6-0bcd-4ae2-ab6f-92747fd1433e"><con:settings/><con:config><script>String [ ] [ ] data = [["fatther", "7"],["helo", "4"],["сенхрофазотрон", "14"]]
+
+for(int i = 0; i&lt;data.length; i++){ 
+	testRunner.testCase.setPropertyValue("word", data[i][0]);
+	testRunner.testCase.setPropertyValue("len", data[i][1]);
+	testRunner.runTestStepByName("checkText")
+}	
 
     </script></con:config></con:testStep><con:testStep type="request" name="checkText" id="f708bde3-3369-42d6-871e-8c2a814f1d4a" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpellServiceSoap</con:interface><con:operation>checkText</con:operation><con:request name="checkText" id="54159512-fe62-48bf-84d6-d670a4e61692"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://speller.yandex.net/services/spellservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spel="http://speller.yandex.net/services/spellservice">
    <soapenv:Header/>
