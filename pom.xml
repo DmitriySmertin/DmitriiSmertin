@@ -25,6 +25,7 @@
         <testng.version>7.1.0</testng.version>
         <aspectj.version>1.9.5</aspectj.version>
         <cucumber.version>6.11.0</cucumber.version>
+        <rest-assured.version>4.2.0</rest-assured.version>
     </properties>
 
     <build>
@@ -182,6 +183,11 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-cucumber-jvm</artifactId>
             <version>${allure.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
         </dependency>
     </dependencies>
     <reporting>
