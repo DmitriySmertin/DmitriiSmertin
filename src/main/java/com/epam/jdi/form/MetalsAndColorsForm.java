@@ -11,7 +11,6 @@ import com.epam.jdi.light.ui.html.elements.common.Button;
 import com.epam.jdi.light.ui.html.elements.common.Checkbox;
 import com.epam.jdi.light.ui.html.elements.complex.RadioButtons;
 
-
 public class MetalsAndColorsForm extends Form<MetalsAndColorsInfo> {
     @JDropdown(root = "div[ui=dropdown]",
             value = ".filter-option",
@@ -52,7 +51,6 @@ public class MetalsAndColorsForm extends Form<MetalsAndColorsInfo> {
     @UI("button#submit-button")
     public Button submitBtn;
 
-
     @Override
     public void fill(MetalsAndColorsInfo metalsAndColors) {
         summary.select(metalsAndColors.getSummary().get(0).toString());
@@ -68,7 +66,5 @@ public class MetalsAndColorsForm extends Form<MetalsAndColorsInfo> {
     @Override
     public void submit() {
         submitBtn.click();
-
-
     }
 }

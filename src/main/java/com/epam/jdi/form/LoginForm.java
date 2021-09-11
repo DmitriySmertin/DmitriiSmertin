@@ -14,5 +14,4 @@ public class LoginForm extends Form<User> {
     TextField password;
     @FindBy(id = "login-button")
     Button submit;
-
 }

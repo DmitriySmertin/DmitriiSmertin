@@ -16,12 +16,5 @@ public interface TestInit {
 
     @BeforeSuite(alwaysRun = true)
     public static void setUp() {
-        initElements(JdiSite.class);
+        initSite(JdiSite.class);
     }
-
-    @AfterTest(alwaysRun = true)
-    public static void TearDown() {
-        HomePage.logout();
-        killAllSeleniumDrivers();
-    }
-}

@@ -28,6 +28,7 @@ public class HomePage extends WebPage {
         userIcon.click();
         loginForm.login(user);
     }
+
     public static void logout() {
         userIcon.click();
         logoutButton.click();

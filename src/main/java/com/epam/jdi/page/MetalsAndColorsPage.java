@@ -29,6 +29,4 @@ public class MetalsAndColorsPage extends WebPage {
                 .map(element -> element.getText())
                 .collect(Collectors.toList());
     }
-
-
 }

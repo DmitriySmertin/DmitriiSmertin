@@ -2,8 +2,6 @@ package com.epam.tc.hw7;
 
 import com.epam.jdi.enteties.MetalsAndColorsInfo;
 import org.testng.annotations.Test;
-
-
 import static com.epam.jdi.JdiSite.*;
 import static com.epam.jdi.enteties.User.ROMAN;
 import static com.epam.jdi.form.MetalsAndColorsForm.vegetable;

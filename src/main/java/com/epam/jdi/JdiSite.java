@@ -20,13 +20,10 @@ public class JdiSite {
 
     public static void login(User user) {
         homePage.login(user);
-
     }
 
     public static String getUserName() {
         return homePage.getUserName();
+
     }
-
-
-}
 
