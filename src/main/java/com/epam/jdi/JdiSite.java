@@ -26,4 +26,5 @@ public class JdiSite {
         return homePage.getUserName();
 
     }
+}
 

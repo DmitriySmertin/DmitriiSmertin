@@ -6,7 +6,6 @@ import java.io.IOException;
 
 public class JsonDataProvider {
 
-
     @DataProvider(name = "dataJson")
     public static Object[][] metalsAndColorsDataSet() throws IOException {
         return GsonParser.parse("src/test/resources/metalsColorsDataSet.json");
