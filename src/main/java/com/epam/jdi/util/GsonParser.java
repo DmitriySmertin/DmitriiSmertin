@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class GsonParser {
 
-    public static Object[][] parse(String path) throws IOException {
+    public static Object[][] parser(String path) throws IOException {
         Gson gson = new Gson();
         Object[][] dataObject;
         Type type = new TypeToken<Map<String, MetalsAndColorsInfo>>() {
