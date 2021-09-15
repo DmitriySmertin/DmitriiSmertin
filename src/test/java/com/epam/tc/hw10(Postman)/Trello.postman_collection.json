@@ -1,0 +1,576 @@
+{
+	"info": {
+		"_postman_id": "4506a7f5-7d08-467e-837a-b10dfcdfedff",
+		"name": "Trello",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create a Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response not Empty and have id field\",function(){\r",
+							"    pm.response.to.have.jsonBody('id');\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"idBoard\",jsonData.id)\r",
+							"pm.environment.set(\"beforeUpdateNameBoard\",jsonData.name)\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uri}}/1/boards/?key={{authorization_key}}&token={{authorization_token}}&name={{$randomWord}} Board",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{authorization_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{authorization_token}}"
+						},
+						{
+							"key": "name",
+							"value": "{{$randomWord}} Board"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"idCard\",jsonData.id)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{uri}}/1/cards?key={{authorization_key}}&token={{authorization_token}}&idList={{idList}}&name={{$randomWord}} Card",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"1",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{authorization_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{authorization_token}}"
+						},
+						{
+							"key": "idList",
+							"value": "{{idList}}"
+						},
+						{
+							"key": "name",
+							"value": "{{$randomWord}} Card"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"idList\",jsonData.id)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{uri}}/1/lists/?name={{$randomWord}} List&idBoard={{idBoard}}&key={{authorization_key}}&token={{authorization_token}}",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{{$randomWord}} List"
+						},
+						{
+							"key": "idBoard",
+							"value": "{{idBoard}}"
+						},
+						{
+							"key": "key",
+							"value": "{{authorization_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{authorization_token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Card",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{uri}}/1/cards/{{idCard}}?key={{authorization_key}}&token={{authorization_token}}",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{idCard}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{authorization_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{authorization_token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response have field _value\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData._value).to.eql(null);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{uri}}/1/boards/{{idBoard}}/?key={{authorization_key}}&token={{authorization_token}}",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{idBoard}}",
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{authorization_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{authorization_token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Archive or unarchive a List",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{uri}}/1/lists/{{idList}}/closed?key={{authorization_key}}&token={{authorization_token}}&value=true",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{idList}}",
+						"closed"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{authorization_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{authorization_token}}"
+						},
+						{
+							"key": "value",
+							"value": "true",
+							"description": "archive = true, unarchive = false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update name a Card",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{uri}}/1/cards/{{idCard}}?key={{authorization_key}}&token={{authorization_token}}&name={{$randomWord}} Card",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{idCard}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{authorization_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{authorization_token}}"
+						},
+						{
+							"key": "name",
+							"value": "{{$randomWord}} Card"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a name on a List",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{uri}}/1/lists/{{idList}}/name?key={{authorization_key}}&token={{authorization_token}}&value=Update {{$randomWord}} List",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{idList}}",
+						"name"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{authorization_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{authorization_token}}"
+						},
+						{
+							"key": "value",
+							"value": "Update {{$randomWord}} List"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Board name before update not equals board name after update\",function(){\r",
+							"    var jsonData = JSON.parse(responseBody);\r",
+							"    pm.expect(jsonData.name).to.not.eql(pm.environment.get(\"beforeUpdateNameBoard\"))\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{uri}}/1/boards/{{idBoard}}/?key={{authorization_key}}&token={{authorization_token}}&name=Update {{$randomWord}} Board",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{idBoard}}",
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{authorization_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{authorization_token}}"
+						},
+						{
+							"key": "name",
+							"value": "Update {{$randomWord}} Board"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Boards",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody)\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"if(jsonData.length==0)\r",
+							"{\r",
+							"    console.info(\"Boards not exist\")\r",
+							"}\r",
+							"\r",
+							"pm.test(\"BoardsList not empty\",function(){\r",
+							"    pm.expect(jsonData.length).above(0)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{uri}}/1/members/me/boards/?key={{authorization_key}}&token={{authorization_token}}",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"1",
+						"members",
+						"me",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{authorization_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{authorization_token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Card",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{uri}}/1/cards/{{idCard}}?key={{authorization_key}}&token={{authorization_token}}&idList={{idList}}",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{idCard}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{authorization_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{authorization_token}}"
+						},
+						{
+							"key": "idList",
+							"value": "{{idList}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{uri}}/1/lists/{{idList}}?key={{authorization_key}}&token={{authorization_token}}",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{idList}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{authorization_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{authorization_token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{uri}}/1/boards/{{idBoard}}?key={{authorization_key}}&token={{authorization_token}}",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{idBoard}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{authorization_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{authorization_token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
