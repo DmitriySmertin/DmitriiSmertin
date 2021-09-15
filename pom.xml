@@ -23,7 +23,7 @@
         <allure-maven.version>2.10.0</allure-maven.version>
         <assertj.version>3.4.1</assertj.version>
         <testng.version>7.1.0</testng.version>
-        <aspectj.version>1.9.5</aspectj.version>
+        <aspectj.version>1.9.6</aspectj.version>
         <cucumber.version>6.11.0</cucumber.version>
         <rest-assured.version>4.2.0</rest-assured.version>
     </properties>
@@ -46,7 +46,7 @@
                     <dependency>
                         <groupId>org.aspectj</groupId>
                         <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
+                        <version>1.9.6</version>
                     </dependency>
                 </dependencies>
             </plugin>
