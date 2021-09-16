@@ -7,12 +7,14 @@ import com.epam.api.services.RestTrelloService;
 import com.epam.api.services.URI;
 import io.restassured.specification.RequestSpecification;
 
+import static com.epam.api.services.URI.CREATE_NEW_BOARD_URI;
+
 public class Main {
     public static void main(String[] args) {
 
-        PropertyService prop = new PropertyService();
-        RestTrelloService restTrelloService = new RestTrelloService();
-        restTrelloService.getNoParams(URI.GET_ALL_BOARDS_URI).prettyPrint();
+        System.out.println(CREATE_NEW_BOARD_URI);
+
+
     }
 
 

@@ -1,19 +1,21 @@
 package com.epam.tc.hw9;
 
+import com.epam.api.dto.BoardDto;
 import com.epam.api.services.PropertyService;
 import com.epam.api.services.RestTrelloService;
-import com.epam.api.services.URI;
-import com.google.gson.JsonObject;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
+import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
-import netscape.javascript.JSObject;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.epam.api.services.PropertyService.getValue;
+import static com.epam.api.services.URI.DELETE_BOARD_URI;
 import static com.epam.api.services.URI.GET_ALL_BOARDS_URI;
 
 public class BoardTest extends BaseTest{
@@ -22,12 +24,15 @@ public class BoardTest extends BaseTest{
     String token = getValue("Token");
     String key = getValue("API-Key");
     String endpoint = "/1/members/me/boards/";
+    List<String> listBoardsId = new ArrayList<>();
 
     @BeforeMethod
     public void setup() {
         REQUEST_SPECIFICATION = new RequestSpecBuilder()
                 .addParam("key", prop.getValue("API-Key"))
                 .addParam("token",prop.getValue("Token"))
+//                .addParam("name", "Anywere board")
+                .addFilter(new ResponseLoggingFilter())
                 .addFilter(new ResponseLoggingFilter()).build();
     }
 
@@ -36,7 +41,8 @@ public class BoardTest extends BaseTest{
     public void getAllBoards()
     {
         RestAssured.given()
-                .get("https://api.trello.com/1/members/me/boards/?key=e6aa340f0a408510fa586d960a277c5e&token=0f4780c5df167bb5225c2676d5b994fde1da74adc30826f009b98e50c7b418e2")
+                .contentType(ContentType.JSON)
+                .post("https://api.trello.com/1/boards/?key=e6aa340f0a408510fa586d960a277c5e&token=0f4780c5df167bb5225c2676d5b994fde1da74adc30826f009b98e50c7b418e2&name=fuckYou")
                 .prettyPrint();
     }
 
@@ -61,9 +67,18 @@ public class BoardTest extends BaseTest{
     @Test
     public void getAllBoards4()
     {
-        RestAssured.given(REQUEST_SPECIFICATION)
-                .param("name", "NewBoard")
-                .post(URI.CREATE_NEW_BOARD);
+        RestTrelloService rst = new RestTrelloService();
+        rst.createNewBoard("Я создал эту гребанную доску");
 
     }
+
+    @Test
+    public void getAllBoards5()
+    {
+        restTrelloService.deleteBoardForId(listBoardsId.get(0));
+        listBoardsId.clear();
+    }
+
+
+
 }
