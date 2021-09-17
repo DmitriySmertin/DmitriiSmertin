@@ -11,4 +11,5 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class BoardDto {
     private String id;
+    private String name;
 }

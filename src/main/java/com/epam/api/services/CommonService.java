@@ -14,8 +14,6 @@ import static io.restassured.RestAssured.given;
 
 public class CommonService {
     private RequestSpecification REQUEST_SPECIFICATION;
-    private PropertyService prop = new PropertyService();
-
 
     public CommonService() {
         REQUEST_SPECIFICATION = new RequestSpecBuilder()

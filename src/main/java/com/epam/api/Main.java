@@ -7,13 +7,15 @@ import com.epam.api.services.RestTrelloService;
 import com.epam.api.services.URI;
 import io.restassured.specification.RequestSpecification;
 
+import static com.epam.api.services.PropertyService.getValue;
+import static com.epam.api.services.PropertyService.setValue;
 import static com.epam.api.services.URI.CREATE_NEW_BOARD_URI;
 
 public class Main {
     public static void main(String[] args) {
-
-        System.out.println(CREATE_NEW_BOARD_URI);
-
+        PropertyService prop = new PropertyService();
+        setValue("asdasldkas", "IdBoard");
+        System.out.println(getValue("IdBoard"));
 
     }
 
