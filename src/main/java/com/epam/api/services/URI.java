@@ -8,5 +8,7 @@ public class URI {
     public static final String CREATE_NEW_BOARD_URI = BASE_URI + "/1/boards/";
     public static final String DELETE_BOARD_URI = BASE_URI + "/1/boards/";
     public static final String GET_A_BOARD = BASE_URI + "/1/boards/";
+    public static final String CREATE_NEW_LIST_URI = BASE_URI + "/1/lists/";
+    public static final String GET_A_LIST = BASE_URI + "/1/lists/";
 
 }

@@ -13,9 +13,9 @@ import static com.epam.api.services.URI.CREATE_NEW_BOARD_URI;
 
 public class Main {
     public static void main(String[] args) {
-        PropertyService prop = new PropertyService();
-        setValue("asdasldkas", "IdBoard");
-        System.out.println(getValue("IdBoard"));
+        RestTrelloService rst = new RestTrelloService();
+        rst.createNewBoard("akafaf board");
+
 
     }
 
