@@ -1,7 +1,6 @@
 package com.epam.api.services;
 
 import com.epam.api.dto.BoardDto;
-import com.epam.api.dto.ListDto;
 import com.google.gson.Gson;
 import io.restassured.response.Response;
 
@@ -31,11 +30,6 @@ public class RestTrelloService extends CommonService {
                 .deleteNoParam(DELETE_BOARD_URI + id);
     }
 
-    public Response getBoard(String id) {
-        return new CommonService()
-                .getNoParams(GET_A_BOARD + id);
-    }
-
     public Response createNewList(String name, String idBoard) {
         Map<String, Object> params = new HashMap<>();
         params.put("name", name);
@@ -44,14 +38,16 @@ public class RestTrelloService extends CommonService {
         return response;
     }
 
-    public ListDto[] getList(String id)
-    {
-        return
-                new Gson().fromJson(
-                        new CommonService()
-                                .getNoParams(GET_A_LIST + id)
-                                .getBody().asString(), ListDto[].class);
-    }
+    public Response updateNameList(String idList, String changeNameList) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", changeNameList);
+        return putWithParams(UPDATE_NAME_LIST + idList + "/", map);
     }
 
-
+    public Response createCard(String idList, String nameCard) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("idList", idList);
+        map.put("name", nameCard);
+        return postWithParams(CREATE_NEW_CARD, map);
+    }
+}

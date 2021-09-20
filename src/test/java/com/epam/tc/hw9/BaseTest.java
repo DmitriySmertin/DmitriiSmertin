@@ -1,27 +1,22 @@
 package com.epam.tc.hw9;
 
 import com.epam.api.dto.BoardDto;
-import com.epam.api.dto.ListDto;
 import com.epam.api.services.PropertyService;
-import com.epam.api.services.RestTrelloAssertion;
 import com.epam.api.services.RestTrelloService;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
-public class BaseTest extends RestTrelloAssertion {
+public class BaseTest {
     public RequestSpecification REQUEST_SPECIFICATION;
     public PropertyService prop = new PropertyService();
     public RestTrelloService restTrelloService = new RestTrelloService();
     public BoardDto[] boards = restTrelloService.getAllBoards();
+    public Integer defaultCountBoard = 1;
+    public String idList;
 
     @BeforeClass
     public void setup() {

@@ -1,10 +1,8 @@
 package com.epam.api.services;
 
-import lombok.SneakyThrows;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -29,13 +27,5 @@ public class PropertyService {
             }
         }
         return null;
-    }
-
-    @SneakyThrows
-    public static void setValue(String key, String value)
-    {
-        fis = new FileInputStream("./src/test/resources/test.properties");
-        prop.load(fis);
-        prop.setProperty(value, key);
     }
 }

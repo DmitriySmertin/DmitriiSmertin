@@ -7,7 +7,6 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import static com.epam.api.services.PropertyService.getValue;
@@ -22,7 +21,6 @@ public class CommonService {
                 .addQueryParam("token", getValue("Token"))
                 .addFilter(new ResponseLoggingFilter()).build();
     }
-
 
     public Response getNoParams(String endpoint) {
         Response response = RestAssured.given(REQUEST_SPECIFICATION)
@@ -44,9 +42,15 @@ public class CommonService {
     public Response deleteNoParam(String endpoint) {
         Response response = RestAssured.given(REQUEST_SPECIFICATION)
                 .delete(endpoint);
-
         return response;
     }
 
-
+    public Response putWithParams(String endpoint, Map<String, Object> params) {
+        RequestSpecification specification = RestAssured.given(REQUEST_SPECIFICATION)
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON);
+        for (Map.Entry<String, Object> param : params.entrySet())
+            specification.queryParam(param.getKey(), param.getValue());
+        return specification.put(endpoint);
+    }
 }
