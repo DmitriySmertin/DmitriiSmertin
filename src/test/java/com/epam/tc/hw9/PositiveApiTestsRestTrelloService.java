@@ -11,18 +11,16 @@ public class PositiveApiTestsRestTrelloService extends BaseTest {
     @DataProvider
     public Object[][] boardData() {
         return new Object[][]{
-                {"FirstBoard", "1"},
-                {"SecondBoard", "2"},
-                {"ThirdBoard", "3"},
+                {"FirstBoard", 1},
+                {"SecondBoard", 2},
+                {"ThirdBoard", 3},
         };
     }
 
     @Test(description = "A test that verifies the correctness of creating a board",
             dataProvider = "boardData")
     public void createBoardTest(String nameBoard, Integer expCountBoard) {
-        restTrelloService.createNewBoard(nameBoard)
-                .then()
-                .statusCode(SC_OK);
+        restTrelloService.createNewBoard(nameBoard);
         boards = restTrelloService.getAllBoards();
         checkCountBoards(boards.length, expCountBoard);
         checkFirstNameBoard(boards[0].getName(), boardData()[0][0]);
@@ -32,14 +30,10 @@ public class PositiveApiTestsRestTrelloService extends BaseTest {
     public void deleteBoardTest() {
         tearDown();
         restTrelloService.createNewBoard("Board for Delete")
-                .then()
-                .statusCode(SC_OK)
                 .body("name", is("Board for Delete"));
         boards = restTrelloService.getAllBoards();
         checkCreateBoard(boards.length, 1);
-        restTrelloService.deleteBoardForId(boards[0].getId())
-                .then()
-                .statusCode(SC_OK);
+        restTrelloService.deleteBoardForId(boards[0].getId());
         boards = restTrelloService.getAllBoards();
         checkCreateBoard(boards.length, 0);
     }
@@ -49,10 +43,9 @@ public class PositiveApiTestsRestTrelloService extends BaseTest {
         restTrelloService.createNewBoard("Amazing board");
         boards = restTrelloService.getAllBoards();
         String idBoard = boards[0].getId();
-        Response resp = restTrelloService.createNewList("Amazing List", idBoard)
-                .then().statusCode(SC_OK)
-                .body("name", is("Amazing List"))
-                .extract().response();
+        restTrelloService.createNewList("Amazing List", idBoard)
+                .then()
+                .body("name", is("Amazing List"));
     }
 
     @DataProvider
@@ -72,8 +65,6 @@ public class PositiveApiTestsRestTrelloService extends BaseTest {
         Response respList = restTrelloService.createNewList("White List", boards[0].getId());
         idList = respList.body().asString().substring(7, 31);
         restTrelloService.updateNameList(idList, nameList)
-                .then()
-                .statusCode(SC_OK)
                 .body("name", is(nameList));
         tearDown();
     }
@@ -85,8 +76,6 @@ public class PositiveApiTestsRestTrelloService extends BaseTest {
         Response respList = restTrelloService.createNewList("White List", boards[0].getId());
         idList = respList.body().asString().substring(7, 31);
         restTrelloService.createCard(idList, "new Card")
-                .then()
-                .statusCode(SC_OK)
                 .body("name", is("new Card"))
                 .extract().response();
         tearDown();

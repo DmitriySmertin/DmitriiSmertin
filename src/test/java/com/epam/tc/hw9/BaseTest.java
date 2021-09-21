@@ -12,21 +12,9 @@ import org.testng.annotations.BeforeClass;
 
 
 public class BaseTest extends RestTrelloAssertion {
-    public RequestSpecification REQUEST_SPECIFICATION;
-    public PropertyService prop = new PropertyService();
     public RestTrelloService restTrelloService = new RestTrelloService();
     public BoardDto[] boards = restTrelloService.getAllBoards();
-    public Integer defaultCountBoard = 1;
     public String idList;
-
-    @BeforeClass
-    public void setup() {
-        REQUEST_SPECIFICATION = new RequestSpecBuilder()
-                .addQueryParam("key", prop.getValue("API-Key"))
-                .addQueryParam("token", prop.getValue("Token"))
-                .addFilter(new ResponseLoggingFilter())
-                .addFilter(new ResponseLoggingFilter()).build();
-    }
 
     @AfterClass
     public void tearDown() {

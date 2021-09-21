@@ -11,12 +11,14 @@ import java.util.Map;
 
 import static com.epam.api.services.PropertyService.*;
 import static io.restassured.RestAssured.given;
+import static org.apache.http.HttpStatus.SC_OK;
 
 public class CommonService {
     private RequestSpecification requestSpecification;
 
     public CommonService() {
         requestSpecification = new RequestSpecBuilder()
+                .setBaseUri(getBaseUri())
                 .addQueryParam("key", getKey())
                 .addQueryParam("token", getToken())
                 .addFilter(new ResponseLoggingFilter())

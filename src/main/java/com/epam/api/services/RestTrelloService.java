@@ -3,11 +3,13 @@ package com.epam.api.services;
 import com.epam.api.dto.BoardDto;
 import com.google.gson.Gson;
 import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static com.epam.api.services.URI.*;
+import static org.apache.http.HttpStatus.SC_OK;
 
 public class RestTrelloService extends CommonService {
     public BoardDto[] getAllBoards() {
@@ -18,16 +20,20 @@ public class RestTrelloService extends CommonService {
                                 .getBody().asString(), BoardDto[].class);
     }
 
-    public Response createNewBoard(String nameBoard) {
+    public ValidatableResponse createNewBoard(String nameBoard) {
         Map<String, Object> param = new HashMap<>();
         param.put("name", nameBoard);
         return new CommonService()
-                .postWithParams(CREATE_NEW_BOARD_URI, param);
+                .postWithParams(BOARDS_URI, param)
+                .then()
+                .statusCode(SC_OK);
     }
 
-    public Response deleteBoardForId(String id) {
+    public ValidatableResponse deleteBoardForId(String id) {
         return new CommonService()
-                .deleteNoParam(DELETE_BOARD_URI + id);
+                .deleteNoParam(BOARDS_URI + id)
+                .then()
+                .statusCode(SC_OK);
     }
 
     public Response createNewList(String name, String idBoard) {
@@ -35,21 +41,24 @@ public class RestTrelloService extends CommonService {
         params.put("name", name);
         params.put("idBoard", idBoard);
         return new CommonService()
-                .postWithParams(CREATE_NEW_LIST_URI, params);
+                .postWithParams(LIST_URI, params);
     }
 
-    public Response updateNameList(String idList, String changeNameList) {
+    public ValidatableResponse updateNameList(String idList, String changeNameList) {
         Map<String, Object> map = new HashMap<>();
         map.put("name", changeNameList);
         return new CommonService()
-                .putWithParams(UPDATE_NAME_LIST + idList + "/", map);
+                .putWithParams(LIST_URI + idList + "/", map)
+                .then()
+                .statusCode(SC_OK);
     }
 
-    public Response createCard(String idList, String nameCard) {
+    public ValidatableResponse createCard(String idList, String nameCard) {
         Map<String, Object> map = new HashMap<>();
         map.put("idList", idList);
         map.put("name", nameCard);
         return new CommonService()
-                .postWithParams(CREATE_NEW_CARD, map);
+                .postWithParams(CARD_URI, map)
+                .then().statusCode(SC_OK);
     }
 }

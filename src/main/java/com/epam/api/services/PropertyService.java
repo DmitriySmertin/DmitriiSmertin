@@ -29,13 +29,16 @@ public class PropertyService {
         return null;
     }
 
-    public static String getKey()
-    {
-       return getValue("API-Key");
+    public static String getKey() {
+        return getValue("API-Key");
     }
 
-    public static String getToken()
-    {
+    public static String getToken() {
         return getValue("Token");
+    }
+
+    public static String getBaseUri()
+    {
+        return getValue("BaseUri");
     }
 }

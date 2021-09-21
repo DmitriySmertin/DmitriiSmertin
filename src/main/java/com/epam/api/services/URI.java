@@ -3,13 +3,8 @@ package com.epam.api.services;
 import static com.epam.api.services.PropertyService.getValue;
 
 public class URI {
-    private static final String BASE_URI = getValue("BaseUri");
-    public static final String GET_ALL_BOARDS_URI = BASE_URI + "/1/members/me/boards/";
-    public static final String CREATE_NEW_BOARD_URI = BASE_URI + "/1/boards/";
-    public static final String DELETE_BOARD_URI = BASE_URI + "/1/boards/";
-    public static final String GET_A_BOARD = BASE_URI + "/1/boards/";
-    public static final String CREATE_NEW_LIST_URI = BASE_URI + "/1/lists/";
-    public static final String GET_A_LIST = BASE_URI + "/1/lists/";
-    public static final String UPDATE_NAME_LIST = BASE_URI + "/1/lists/";
-    public static final String CREATE_NEW_CARD = BASE_URI + "/1/cards";
+    public static final String GET_ALL_BOARDS_URI ="/1/members/me/boards/";
+    public static final String BOARDS_URI ="/1/boards/";
+    public static final String LIST_URI ="/1/lists/";
+    public static final String CARD_URI = "/1/cards";
 }
