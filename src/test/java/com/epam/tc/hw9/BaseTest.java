@@ -2,6 +2,7 @@ package com.epam.tc.hw9;
 
 import com.epam.api.dto.BoardDto;
 import com.epam.api.services.PropertyService;
+import com.epam.api.services.RestTrelloAssertion;
 import com.epam.api.services.RestTrelloService;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.ResponseLoggingFilter;
@@ -10,7 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 
-public class BaseTest {
+public class BaseTest extends RestTrelloAssertion {
     public RequestSpecification REQUEST_SPECIFICATION;
     public PropertyService prop = new PropertyService();
     public RestTrelloService restTrelloService = new RestTrelloService();

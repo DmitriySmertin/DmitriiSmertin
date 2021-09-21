@@ -34,20 +34,22 @@ public class RestTrelloService extends CommonService {
         Map<String, Object> params = new HashMap<>();
         params.put("name", name);
         params.put("idBoard", idBoard);
-        Response response = postWithParams(CREATE_NEW_LIST_URI, params);
-        return response;
+        return new CommonService()
+                .postWithParams(CREATE_NEW_LIST_URI, params);
     }
 
     public Response updateNameList(String idList, String changeNameList) {
         Map<String, Object> map = new HashMap<>();
         map.put("name", changeNameList);
-        return putWithParams(UPDATE_NAME_LIST + idList + "/", map);
+        return new CommonService()
+                .putWithParams(UPDATE_NAME_LIST + idList + "/", map);
     }
 
     public Response createCard(String idList, String nameCard) {
         Map<String, Object> map = new HashMap<>();
         map.put("idList", idList);
         map.put("name", nameCard);
-        return postWithParams(CREATE_NEW_CARD, map);
+        return new CommonService()
+                .postWithParams(CREATE_NEW_CARD, map);
     }
 }

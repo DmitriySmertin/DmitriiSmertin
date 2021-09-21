@@ -9,27 +9,27 @@ import io.restassured.specification.RequestSpecification;
 
 import java.util.Map;
 
-import static com.epam.api.services.PropertyService.getValue;
+import static com.epam.api.services.PropertyService.*;
 import static io.restassured.RestAssured.given;
 
 public class CommonService {
-    private RequestSpecification REQUEST_SPECIFICATION;
+    private RequestSpecification requestSpecification;
 
     public CommonService() {
-        REQUEST_SPECIFICATION = new RequestSpecBuilder()
-                .addQueryParam("key", getValue("API-Key"))
-                .addQueryParam("token", getValue("Token"))
-                .addFilter(new ResponseLoggingFilter()).build();
+        requestSpecification = new RequestSpecBuilder()
+                .addQueryParam("key", getKey())
+                .addQueryParam("token", getToken())
+                .addFilter(new ResponseLoggingFilter())
+                .build();
     }
 
     public Response getNoParams(String endpoint) {
-        Response response = RestAssured.given(REQUEST_SPECIFICATION)
+        return RestAssured.given(requestSpecification)
                 .get(endpoint);
-        return response;
     }
 
     public Response postWithParams(String uri, Map<String, Object> params) {
-        RequestSpecification specification = given(REQUEST_SPECIFICATION)
+        RequestSpecification specification = given(requestSpecification)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON);
 
@@ -40,17 +40,18 @@ public class CommonService {
     }
 
     public Response deleteNoParam(String endpoint) {
-        Response response = RestAssured.given(REQUEST_SPECIFICATION)
+        return RestAssured.given(requestSpecification)
                 .delete(endpoint);
-        return response;
     }
 
     public Response putWithParams(String endpoint, Map<String, Object> params) {
-        RequestSpecification specification = RestAssured.given(REQUEST_SPECIFICATION)
+        RequestSpecification specification = RestAssured.given(requestSpecification)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON);
+
         for (Map.Entry<String, Object> param : params.entrySet())
             specification.queryParam(param.getKey(), param.getValue());
+
         return specification.put(endpoint);
     }
 }

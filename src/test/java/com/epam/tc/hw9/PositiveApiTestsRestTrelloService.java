@@ -1,34 +1,31 @@
 package com.epam.tc.hw9;
 
 import io.restassured.response.Response;
-import org.assertj.core.api.Assertions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import static org.apache.http.HttpStatus.SC_OK;
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.*;
 
 public class PositiveApiTestsRestTrelloService extends BaseTest {
     @DataProvider
-    public Object[][] boardNameData() {
+    public Object[][] boardData() {
         return new Object[][]{
-                {"FirstBoard"},
-                {"SecondBoard"},
-                {"ThirdBoard"},
+                {"FirstBoard", "1"},
+                {"SecondBoard", "2"},
+                {"ThirdBoard", "3"},
         };
     }
 
     @Test(description = "A test that verifies the correctness of creating a board",
-            dataProvider = "boardNameData")
-    public void createBoardTest(String nameBoard) {
+            dataProvider = "boardData")
+    public void createBoardTest(String nameBoard, Integer expCountBoard) {
         restTrelloService.createNewBoard(nameBoard)
                 .then()
                 .statusCode(SC_OK);
         boards = restTrelloService.getAllBoards();
-        Assertions.assertThat(boards.length).isEqualTo(defaultCountBoard).as("Count boards not equal expected");
-        ++defaultCountBoard;
-        assertThat(boards[0].getName()).as("The first board name does not match the test data")
-                .isEqualTo(boardNameData()[0][0]);
+        checkCountBoards(boards.length, expCountBoard);
+        checkFirstNameBoard(boards[0].getName(), boardData()[0][0]);
     }
 
     @Test(description = "A test that verifies the correctness of deleting the board")
@@ -39,12 +36,12 @@ public class PositiveApiTestsRestTrelloService extends BaseTest {
                 .statusCode(SC_OK)
                 .body("name", is("Board for Delete"));
         boards = restTrelloService.getAllBoards();
-        assertThat(boards.length).isEqualTo(1).as("Board not create");
+        checkCreateBoard(boards.length, 1);
         restTrelloService.deleteBoardForId(boards[0].getId())
                 .then()
                 .statusCode(SC_OK);
         boards = restTrelloService.getAllBoards();
-        assertThat(boards.length).isEqualTo(0).as("Board not delete");
+        checkCreateBoard(boards.length, 0);
     }
 
     @Test(description = "A test that verifies the correctness of creating a list")

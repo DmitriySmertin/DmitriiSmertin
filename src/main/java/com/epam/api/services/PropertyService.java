@@ -28,4 +28,14 @@ public class PropertyService {
         }
         return null;
     }
+
+    public static String getKey()
+    {
+       return getValue("API-Key");
+    }
+
+    public static String getToken()
+    {
+        return getValue("Token");
+    }
 }
