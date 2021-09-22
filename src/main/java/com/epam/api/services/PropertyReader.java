@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-public class PropertyService {
+public class PropertyReader {
     private static Properties prop = new Properties();
     private static FileInputStream fis = null;
 
@@ -37,8 +37,7 @@ public class PropertyService {
         return getValue("Token");
     }
 
-    public static String getBaseUri()
-    {
+    public static String getBaseUri() {
         return getValue("BaseUri");
     }
 }

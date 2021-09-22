@@ -9,9 +9,8 @@ import io.restassured.specification.RequestSpecification;
 
 import java.util.Map;
 
-import static com.epam.api.services.PropertyService.*;
+import static com.epam.api.services.PropertyReader.*;
 import static io.restassured.RestAssured.given;
-import static org.apache.http.HttpStatus.SC_OK;
 
 public class CommonService {
     private RequestSpecification requestSpecification;

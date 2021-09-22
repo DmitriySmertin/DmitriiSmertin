@@ -11,5 +11,5 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class CardDto {
     private String id;
-
+    private String name;
 }
