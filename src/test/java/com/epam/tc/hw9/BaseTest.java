@@ -16,12 +16,12 @@ public class BaseTest extends RestTrelloAssertion {
     public RestTrelloService restTrelloService = new RestTrelloService();
     public BoardDto[] boards = restTrelloService.getAllBoards();
     public String idList;
+
     @BeforeClass
-    public void setUp()
-    {
-       boardDto = new BoardDto();
-       listDto = new ListDto();
-       cardDto = new CardDto();
+    public void setUp() {
+        boardDto = new BoardDto();
+        listDto = new ListDto();
+        cardDto = new CardDto();
 
     }
 

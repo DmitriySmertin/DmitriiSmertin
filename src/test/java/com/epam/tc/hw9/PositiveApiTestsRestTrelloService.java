@@ -1,7 +1,6 @@
 package com.epam.tc.hw9;
 
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -11,19 +10,21 @@ public class PositiveApiTestsRestTrelloService extends BaseTest {
     @DataProvider
     public Object[][] boardData() {
         return new Object[][]{
-                {"FirstBoard"},
-                {"SecondBoard"},
-                {"ThirdBoard"},
+                {"OneBoard", 1},
+                {"TwoBoard", 2},
+                {"ThreeBoard", 3},
         };
     }
 
     @Test(description = "A test that verifies the correctness of creating a board",
             dataProvider = "boardData")
-    public void createBoardTest(String nameBoard) {
-        boardDto.setName(nameBoard);
-        restTrelloService.createNewBoard(boardDto);
-        boards = restTrelloService.getAllBoards();
-        checkCountBoards(boards.length, 1);
+    public void createBoardTest(String nameBoard, Integer countBoard) {
+        for (int i = 1; i < countBoard + 1; i++) {
+            boardDto.setName(nameBoard);
+            restTrelloService.createNewBoard(boardDto);
+            boards = restTrelloService.getAllBoards();
+            checkCountBoards(boards.length, i);
+        }
         checkNameBoard(boards[0].getName(), nameBoard);
     }
 
@@ -38,6 +39,7 @@ public class PositiveApiTestsRestTrelloService extends BaseTest {
         restTrelloService.deleteBoardForId(boards[0].getId());
         boards = restTrelloService.getAllBoards();
         checkCreateBoard(boards.length, 0);
+
     }
 
     @Test(description = "A test that verifies the correctness of creating a list")
@@ -50,7 +52,8 @@ public class PositiveApiTestsRestTrelloService extends BaseTest {
         listDto.setIdBoard(idBoard);
         restTrelloService.createNewList(listDto)
                 .then()
-                .body("name", is(listDto.getName()));
+                .body("name", is(listDto.getName()))
+                .body("idBoard", is(listDto.getIdBoard()));
     }
 
     @DataProvider
@@ -91,6 +94,7 @@ public class PositiveApiTestsRestTrelloService extends BaseTest {
         restTrelloService.createCard(cardDto)
                 .then()
                 .body("name", is(cardDto.getName()))
+                .body("idList", is(cardDto.getIdList()))
                 .extract().response();
     }
 
