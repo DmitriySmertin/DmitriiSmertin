@@ -11,8 +11,9 @@ import java.util.Map;
 
 import static com.epam.api.services.PropertyReader.*;
 import static io.restassured.RestAssured.given;
+import static org.apache.hc.core5.http.HttpStatus.SC_OK;
 
-public class CommonService {
+public class CommonService extends RestTrelloAssertion{
     private RequestSpecification requestSpecification;
 
     public CommonService() {
@@ -41,7 +42,7 @@ public class CommonService {
     }
 
     public Response deleteNoParam(String endpoint) {
-        return RestAssured.given(requestSpecification)
+        return  RestAssured.given(requestSpecification)
                 .delete(endpoint);
     }
 
@@ -53,6 +54,6 @@ public class CommonService {
         for (Map.Entry<String, Object> param : params.entrySet())
             specification.queryParam(param.getKey(), param.getValue());
 
-        return specification.put(endpoint);
+        return  specification.put(endpoint);
     }
 }

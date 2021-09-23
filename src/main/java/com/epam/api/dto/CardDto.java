@@ -12,4 +12,5 @@ import lombok.experimental.Accessors;
 public class CardDto {
     private String id;
     private String name;
+    private String idList;
 }

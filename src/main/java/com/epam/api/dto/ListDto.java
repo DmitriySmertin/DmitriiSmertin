@@ -12,4 +12,6 @@ import lombok.experimental.Accessors;
 public class ListDto {
     private String id;
     private String name;
+    private String idBoard;
+
 }

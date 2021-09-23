@@ -16,7 +16,6 @@ public class BaseTest extends RestTrelloAssertion {
     public RestTrelloService restTrelloService = new RestTrelloService();
     public BoardDto[] boards = restTrelloService.getAllBoards();
     public String idList;
-    public int defCountBoard = 1;
     @BeforeClass
     public void setUp()
     {

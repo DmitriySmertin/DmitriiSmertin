@@ -1,9 +1,7 @@
 package com.epam.tc.hw9;
 
-import com.epam.api.dto.BoardDto;
-import com.epam.api.dto.CardDto;
-import com.epam.api.dto.ListDto;
 import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -25,14 +23,16 @@ public class PositiveApiTestsRestTrelloService extends BaseTest {
         boardDto.setName(nameBoard);
         restTrelloService.createNewBoard(boardDto);
         boards = restTrelloService.getAllBoards();
-        checkCountBoards(boards.length, defCountBoard);
+        checkCountBoards(boards.length, 1);
+        checkNameBoard(boards[0].getName(), nameBoard);
     }
 
     @Test(description = "A test that verifies the correctness of deleting the board")
     public void deleteBoardTest() {
         boardDto.setName("Board for Delete");
         restTrelloService.createNewBoard(boardDto)
-                .body("name", is("Board for Delete"));
+                .then()
+                .body("name", is(boardDto.getName()));
         boards = restTrelloService.getAllBoards();
         checkCreateBoard(boards.length, 1);
         restTrelloService.deleteBoardForId(boards[0].getId());
@@ -47,9 +47,10 @@ public class PositiveApiTestsRestTrelloService extends BaseTest {
         boards = restTrelloService.getAllBoards();
         String idBoard = boards[0].getId();
         listDto.setName("Amazing List");
-        restTrelloService.createNewList(listDto, idBoard)
+        listDto.setIdBoard(idBoard);
+        restTrelloService.createNewList(listDto)
                 .then()
-                .body("name", is("Amazing List"));
+                .body("name", is(listDto.getName()));
     }
 
     @DataProvider
@@ -68,9 +69,11 @@ public class PositiveApiTestsRestTrelloService extends BaseTest {
         restTrelloService.createNewBoard(boardDto);
         boards = restTrelloService.getAllBoards();
         listDto.setName("Strange List");
-        Response respList = restTrelloService.createNewList(listDto, boards[0].getId());
-        idList = respList.body().asString().substring(7, 31);
+        listDto.setIdBoard(boards[0].getId());
+        Response respList = restTrelloService.createNewList(listDto);
+        idList = restTrelloService.setIdList(respList);
         restTrelloService.updateNameList(idList, nameList)
+                .then()
                 .body("name", is(nameList));
     }
 
@@ -80,11 +83,15 @@ public class PositiveApiTestsRestTrelloService extends BaseTest {
         restTrelloService.createNewBoard(boardDto);
         boards = restTrelloService.getAllBoards();
         listDto.setName("List for Card");
-        Response respList = restTrelloService.createNewList(listDto, boards[0].getId());
-        idList = respList.body().asString().substring(7, 31);
+        listDto.setIdBoard(boards[0].getId());
+        Response respList = restTrelloService.createNewList(listDto);
+        idList = restTrelloService.setIdList(respList);
         cardDto.setName("Card for List");
-        restTrelloService.createCard(cardDto, idList)
-                .body("name", is(listDto.getName()))
+        cardDto.setIdList(idList);
+        restTrelloService.createCard(cardDto)
+                .then()
+                .body("name", is(cardDto.getName()))
                 .extract().response();
     }
+
 }
